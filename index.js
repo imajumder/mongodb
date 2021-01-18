@@ -28,6 +28,7 @@ connectToMongoDB()
 
 client.on('ready', async () => {
   console.log('The client is ready!')
+  client.user.setActivity(' ?help ~ Rigurd.gg')
 
   const baseFile = 'command-base.js'
   const commandBase = require(`./commands/${baseFile}`)
