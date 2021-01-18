@@ -1,0 +1,6 @@
+{
+    "token": "NzgxNDY2NDgxOTI5MjI0MjAz.X7-DYA.nZRCvDJ7DZYKXH4oYYcJL0oWTJA",
+    "prefix": "?",
+    "mongoPath": "mongodb+srv://Discordbot-Owner:BhXaZosCY6OYbHui@mongodb-discord.oejgy.mongodb.net/MongoDB-Discord?retryWrites=true&w=majority",
+    "redisPath":"//redis-12804.c8.us-east-1-4.ec2.cloud.redislabs.com:12804?password=crRC6BIgDx0ftol5PaHH8BImGCgUb41c"
+}
