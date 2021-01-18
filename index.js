@@ -50,8 +50,4 @@ client.on('ready', async () => {
 
 })
 
-client.on('message', async message  => {
-
-  
-})
 client.login(config.token)
