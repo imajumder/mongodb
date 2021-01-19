@@ -14,6 +14,8 @@ const mongo = require('./Util/mongo');
 
 const cron = require('cron')
 
+const loadfeatures = require('./features/load-features')
+
 const connectToMongoDB = async () => {
   await mongo().then(mongoose => {
     try {
@@ -52,6 +54,11 @@ client.on('ready', async () => {
 
   readCommands('commands')
 
+  loadfeatures(client)
+
 })
+
+
+
 
 client.login(config.token)
