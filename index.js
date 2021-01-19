@@ -35,7 +35,6 @@ client.on('ready', async () => {
   client.user.setActivity("|| ?help || Rigurd.gg ||")
 
   loadCommands(client)
-  loadfeatures(client)
 })
 
 client.login(config.token)
