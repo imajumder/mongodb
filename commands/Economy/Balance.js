@@ -8,6 +8,9 @@ module.exports = {
   permissions: 'SEND_MESSAGES',
   callback: async (message, arguments) => {
 
+    const target = message.mentions.users.first() || message.author
+    const targetId = target.id
+
     let botping = [`Are you trying to mention a bot `, `You can't mention them kiddo `, `you seriouly thought i would accept that..`, `Nice try.....`, `Hey thats me...`]
 
     let selfid =  message.author.id
@@ -20,15 +23,7 @@ module.exports = {
       let samebot = Math.floor(Math.random() * botping.length);
       message.reply(botping [samebot]);
     } 
-
-    if (id === selfid) {
-      let same = Math.floor(Math.random() * sameuser.length);
-    message.reply(sameuser [same]);
-    }
-
-
-    const target = message.mentions.users.first() || message.author
-    const targetId = target.id
+ 
 
     const guildId = message.guild.id
     const userId = target.id

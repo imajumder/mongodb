@@ -10,25 +10,6 @@ module.exports = {
   callback: async (message, arguments) => {
     const mention = message.mentions.users.first()
 
-    let botping = [`Are you trying to mention a bot `, `You can't mention them kiddo `, `you seriouly thought i would accept that..`, `Nice try.....`, `Hey thats me...`]
-
-    let selfid =  message.author.id
-
-    let id = mention.id
-
-    let sameuser = [`Hey thats illegal`, `Get a life !`, `What is wrong with you kid `, `Nice try.....`]
-
-    if(target.id === '781466481929224203') {
-      let samebot = Math.floor(Math.random() * botping.length);
-      message.reply(botping [samebot]);
-    } 
-
-    if (id === selfid) {
-      let same = Math.floor(Math.random() * sameuser.length);
-    message.reply(sameuser [same]);
-    }
-
-
     if (!mention) {
       message.reply('Please tag a user to add coins to.')
       return
