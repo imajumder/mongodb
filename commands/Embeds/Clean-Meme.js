@@ -1,4 +1,3 @@
-const https = require('https');
 const Discord = require('discord.js');
 const got = require('got')
 
