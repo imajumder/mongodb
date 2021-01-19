@@ -30,7 +30,7 @@ client.on('ready', async () => {
   console.log('The client is ready!')
  
     setInterval(() => {
-        client.user.setActivity(`${client.guilds.cache.size} Servers | ^help`, { type: 'WATCHING' })
+        client.user.setActivity(`${client.guilds.cache.size} Servers | ?help`, { type: 'WATCHING' })
     }, 60000); // Runs this every 60 seconds.
 
 
