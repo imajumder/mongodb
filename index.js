@@ -14,10 +14,6 @@ const mongo = require('./Util/mongo');
 
 const cron = require('cron')
 
-const loadCommands = require('./commands/load-commands')
-const commandBase = require('./commands/command-base')
-const loadfeatures = require('./features/load-features')
-
 const connectToMongoDB = async () => {
   await mongo().then(mongoose => {
     try {
@@ -32,13 +28,33 @@ connectToMongoDB()
 
 client.on('ready', async () => {
   console.log('The client is ready!')
-  
+ 
     setInterval(() => {
-        client.user.setActivity(`${client.guilds.cache.size} Servers | ?help`, { type: 'WATCHING' })
+        client.user.setActivity(`${client.guilds.cache.size} Servers | ^help`, { type: 'WATCHING' })
     }, 60000); // Runs this every 60 seconds.
 
-  loadCommands(client)
-  loadfeatures(client)
+
+  const baseFile = 'command-base.js'
+  const commandBase = require(`./commands/${baseFile}`)
+
+  const readCommands = (dir) => {
+    const files = fs.readdirSync(path.join(__dirname, dir))
+    for (const file of files) {
+      const stat = fs.lstatSync(path.join(__dirname, dir, file))
+      if (stat.isDirectory()) {z
+        readCommands(path.join(dir, file))
+      } else if (file !== baseFile) {
+        const option = require(path.join(__dirname, dir, file))
+        commandBase(client, option)
+      }
+    }
+  }
+
+  readCommands('commands')
+
 })
+client.on('message', message => {
+message.author.bot
+});
 
 client.login(config.token)

@@ -1,5 +1,5 @@
 const mongo = require('./mongo')
-const profileSchema = require('./../schemas/profile-schema')
+const profileSchema = require('./../Schemas/Profile-Schema')
 
 const coinsCache = {} // { 'guildId-userId': coins }
 
@@ -8,7 +8,7 @@ module.exports = (client) => {}
 module.exports.addCoins = async (guildId, userId, coins) => {
   return await mongo().then(async (mongoose) => {
     try {
-      
+     
 
       const result = await profileSchema.findOneAndUpdate(
         {
@@ -28,6 +28,7 @@ module.exports.addCoins = async (guildId, userId, coins) => {
         }
       )
 
+      
 
       coinsCache[`${guildId}-${userId}`] = result.coins
 
@@ -46,12 +47,12 @@ module.exports.getCoins = async (guildId, userId) => {
 
   return await mongo().then(async (mongoose) => {
     try {
-     
-
       const result = await profileSchema.findOne({
         guildId,
         userId,
       })
+
+      
 
       let coins = 0
       if (result) {
