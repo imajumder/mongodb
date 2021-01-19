@@ -31,7 +31,7 @@ client.on('ready', async () => {
  
     setInterval(() => {
         client.user.setActivity(`${client.guilds.cache.size} Servers | ?help`, { type: 'WATCHING' })
-    }, 60000); // Runs this every 60 seconds.
+    }, 60000); 
 
 
   const baseFile = 'command-base.js'
