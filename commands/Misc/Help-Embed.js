@@ -5,38 +5,83 @@ module.exports = {
     maxArgs: 1,
     expectedArgs: '',
     
-    callback: (message, text) => {
+    callback: (message, text, client) => {
 
-        const exampleEmbed = new Discord.MessageEmbed()
-    .setColor('#0E1111')
-	.setTitle('Support For Rigurd')
-	.setAuthor('Rigurd.gg Commands Support', 'https://images.designtrends.com/wp-content/uploads/2016/02/24095354/Cool-Shipping-Company-Isometric-Logo.jpg')
-    .setDescription('All the commands supported by Rigurd.gg. Type \'?help [command\' to get more info about the command')
-    .addField(`**setprefix [ Prefix ]**`, 'Changes the prefix for this bot', 'Only administrators have permission to use this.', true)
-    .addField( `**[ h , help ]**`, 'Shows all the commands', false)
-    .addField(`**[ kill ] [ Mention ]**`, 'Shows a killed statement directed towards the mentioned user', false)
-    .addField(`**[ rob ] [ Mention ]**`, 'Robs the mentioned user of a random amount', false)
-    .addField(`**[ cm ] [ cleanmeme ]**`, 'Send a random meme from r/cleanmemes', false)
-    .addField(`**[ q ] [ quote ]**`, 'Sends a random quote', false)
-    .addField(`**[ ban ] [ Mention ]**`, 'Bans the mentioned member', 'Only avaible to those with required permissions', true)
-    .addField(`**[ kick ] [ Mention ]**`, 'Kicks the mentioned member', 'Only avaible to those with required permissions', true)
-    .addField(`**[ cool ] [ Mention ]**`, 'Tells how cool you are', true)
-    .addField(`**[ cc ] [ clearchannel ]**`, 'Deletes a few messages', 'Only avaible to those with required permissions', true)
-    .addField(`**[ bal ] [ balance ] [ Mention (optional) ]**`, 'Shows the targeted users balance', true)
-    .addField(`**[ addbal ] [ addbalance ] [ Mention ]**`, 'Adds money to the mentioned users balance without deducting any from the sender', 'Only avaible to those with required permissions', true)
-    .addField(`**[ pay ] [ Mention ]**`, 'Pays a certain amount to the mentioned user', 'Note : This command deductes money from your balance', true)
-    .addField(`**[ mh ] [ math help ]**`, 'Shows all the Maths=involved commands', true)
+        message.channel.send({embed: {
+            color: 3447003,
+            author: {
+              name: 'Rigurd commands support',
+              icon_url: 'https://images.designtrends.com/wp-content/uploads/2016/02/24095354/Cool-Shipping-Company-Isometric-Logo.jpg',
+            },
+            title: "Support for Rigurd",
+            url: "http://discord.gg/2euNa4bjPc",
+            description: `All the commands supported by Rigurr.gg. Type \'?help [command] to get more info about the command`,
+            fields: [{
+                name: "clearchannel [ Aliases : cc ]",
+                value: "Deletes messages [ Avaible to those with permissions ]"
+              },
+              {
+                name: "quote [ Aliases : q ]",
+                value: "ends a random quote to enlighten your mood"
+              },
+              {
+                name: "meme [ Aliases : m ]",
+                value: "Send a random meme from r/memes"
+              },
+              {
+                name: "ban [ Mentioned User ]",
+                value: "Bans the mentioned user [ Avaible to those with permissions ]"
+              },
+              {
+                name: "kick [ Mentioned user]",
+                value: "Kicks the mentioned user [ Avaible to those with permissions ]"
+              },
+              {
+                name: "howcool [ Aliases : cool ]  [ Mentioned user ]",
+                value: "Tells how cool you are [ NOT RANDOMLY ]"
+              },
+              {
+                name: "kill [ Mentioned user ]",
+                value: "Kills the mentioned user..."
+              },
+              {
+                name: "rob [ Mentioned user ]",
+                value: "Robs the person of a random amount [ Under progress ]"
+              },
+              {
+                name: "bal [ Aliases : balance ] [ Mention ( Optional ) ]",
+                value: "Tell yours or the mentioned users balance"
+              },
+              {
+                name: "addbal [ Aliases : addbalance ] [ Mentioned user ] [ Administrator ]",
+                value: "Adds a certain amount of coins to the mentioned users balance without deducting any from yours"
+              },
+              {
+                name: "pay [ Mentioned user ] [ Note : Deducted money from your balance ]",
+                value: "Pays the mentioned user a certain amount"
+              },
+              {
+                name: "mathhelp [ Aliases : mh ]",
+                value: "Shows all math commands"
+              },
+              {
+                name: "setprefix [ Administrator ]",
+                value: "Changes the prefix for this bot"
+              },
+              {
+                name: "ping",
+                value: "Shows the bot's ping/latency"
+              },
 
-
-
-
-	.setThumbnail('https://images.designtrends.com/wp-content/uploads/2016/02/24095354/Cool-Shipping-Company-Isometric-Logo.jpg')
-    .setTimestamp()
-    .setFooter('Generated by Rigurd.gg')
-	
-
-    message.channel.send(exampleEmbed);
-
+            ],
+            timestamp: new Date(),
+            footer: {
+              icon_url: 'https://images.designtrends.com/wp-content/uploads/2016/02/24095354/Cool-Shipping-Company-Isometric-Logo.jpg',
+              text: "© Rigurd"
+            }
+          }
+        });
+   
     },
     permissions: 'SEND_MESSAGES',
    requiredRoles: [],
