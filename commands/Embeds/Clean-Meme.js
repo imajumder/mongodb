@@ -1,6 +1,6 @@
 const https = require('https');
 const Discord = require('discord.js');
-const url = 'https://www.reddit.com/r/cleanmemes/hot/.json?limit=100'
+const got = require('got')
 
 module.exports = {
     commands: ['cleanmeme', 'cm'],
@@ -10,53 +10,23 @@ module.exports = {
     permissions: 'SEND_MESSAGES',
     callback: async (message, arguments) => {
 
-        https.get(url, (result) => {
-            var body = ''
-            result.on('data', (chunk) => {
-                body += chunk
+            const embed = new Discord.MessageEmbed()
+            got('https://www.reddit.com/r/cleanmemes/random/.json').then(response => {
+                let content = JSON.parse(response.body);
+                let permalink = content[0].data.children[0].data.permalink;
+                let memeUrl = `https://reddit.com${permalink}`;
+                let memeImage = content[0].data.children[0].data.url;
+                let memeTitle = content[0].data.children[0].data.title;
+                let memeUpvotes = content[0].data.children[0].data.ups;
+                let memeDownvotes = content[0].data.children[0].data.downs;
+                let memeNumComments = content[0].data.children[0].data.num_comments;
+                embed.setTitle(`${memeTitle}`)
+                embed.setURL(`${memeUrl}`)
+                embed.setImage(memeImage)
+                embed.setColor('RANDOM')
+                embed.setFooter(`👍 ${memeUpvotes} 👎 ${memeDownvotes} 💬 ${memeNumComments}`)
+                message.channel.send(embed);
             })
-
-            result.on('end', () => {
-                var response = JSON.parse(body)
-                var index = response.data.children[Math.floor(Math.random() * 99) + 1].data
-
-                if (index.post_hint !== 'image') {
-
-                    var text = index.selftext
-                    const textembed = new Discord.MessageEmbed()
-                        .setTitle(subRedditName)
-                        .setColor(9384170)
-                        .setDescription(`[${title}](${link})\n\n${text}`)
-                        .setURL(`https://reddit.com/${subRedditName}`)
-
-                    message.channel.send(textembed)
-                }
-
-                var image = index.preview.images[0].source.url.replace('&amp;', '&')
-                var title = index.title
-                var link = 'https://reddit.com' + index.permalink
-                var subRedditName = index.subreddit_name_prefixed
-
-                if (index.post_hint !== 'image') {
-                    const textembed = new Discord.RichEmbed()
-                        .setTitle(subRedditName)
-                        .setColor(9384170)
-                        .setDescription(`[${title}](${link})\n\n${text}`)
-                        .setURL(`https://reddit.com/${subRedditName}`)
-
-                    message.channel.send(textembed)
-                }
-                
-                const imageembed = new Discord.MessageEmbed()
-                    .setTitle(subRedditName)
-                    .setImage(image)
-                    .setColor(9384170)
-                    .setDescription(`[${title}](${link})`)
-                    .setURL(`https://reddit.com/${subRedditName}`)
-                message.channel.send(imageembed)
-            }).on('error', function (e) {
-                console.log('Got an error: ', e)
-            })
-        })
+        
     },
 }
