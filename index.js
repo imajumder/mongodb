@@ -32,7 +32,7 @@ connectToMongoDB()
 
 client.on('ready', async () => {
   console.log('The client is ready!')
-  client.user.setActivity("Game")
+  client.user.setActivity("?help || Rigurd.gg")
 
   loadCommands(client)
   loadfeatures(client)
