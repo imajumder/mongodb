@@ -1,5 +1,5 @@
 module.exports = {
-  commands: ['kill'],
+  commands: ['kill', 'RIP', 'rip'],
   minArgs: 1,
   maxArgs: 1,
   expectedArgs: '[mention]',
