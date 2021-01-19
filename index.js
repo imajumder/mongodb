@@ -16,7 +16,6 @@ const cron = require('cron')
 
 const loadCommands = require('./commands/load-commands')
 const commandBase = require('./commands/command-base')
-const loadfeatures = require('./features/load-features')
 
 const connectToMongoDB = async () => {
   await mongo().then(mongoose => {
