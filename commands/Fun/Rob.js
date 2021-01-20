@@ -4,7 +4,7 @@ module.exports = {
   category: 'Fun',
   cooldown: '15s',
   guildOnly: true,
-
+  description: 'Robs the targeted user of a random amount',
   commands: ['rob'],
   minArgs: 1,
   maxArgs: 1,

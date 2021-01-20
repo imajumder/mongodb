@@ -3,6 +3,7 @@ const economy = require('./../../Util/economy')
 module.exports = {
   category: 'Economy',
   commands: ['bal', 'balance'],
+  description: 'Shows the targeted users current balance',
   guildOnly: true,
 
   cooldown: '15s',

@@ -3,6 +3,7 @@ const economy = require('./../../Util/economy')
 module.exports = {
   category: 'Economy',
   commands: ['addbalance', 'addbal'],
+  description: 'Adds a certain amount of coins to the mentioned users balance',
   guildOnly: true,
 
   cooldown: '1m',

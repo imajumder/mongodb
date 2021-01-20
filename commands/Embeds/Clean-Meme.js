@@ -4,11 +4,11 @@ const got = require('got')
 
 module.exports = {
     category: 'Fun',
-    commands: ['meme', 'm'],
+    commands: ['meme'],
     guildOnly: true,
-
     cooldown: '20s',
     maxArgs: 0,
+    description: 'Posts a random meme from r/memes',
     expectedArgs: "",
     permissionError: 'You must have Send messages permission to use this command',
     permissions: 'SEND_MESSAGES',

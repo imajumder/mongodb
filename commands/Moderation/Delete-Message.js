@@ -2,6 +2,7 @@ module.exports = {
   category: 'Moderation',
   commands: ['cc', 'clearchannel'],
   guildOnly: true,
+  description: 'Deletes an random amount of messages',
 
   cooldown: '15s',
   minArgs: 0,
@@ -14,6 +15,6 @@ module.exports = {
         })
       
    },
-   permissions: 'MANAGE_MESSAGES',
+   permissions: 'BAN_MEMBERS',
    requiredRoles: [],
 }

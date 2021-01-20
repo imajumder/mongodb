@@ -3,6 +3,7 @@ const economy = require('./../../Util/economy')
 module.exports = {
   category: 'Economy',
   guildOnly: true,
+  description: 'Pays an amount of coins to the target user deducting those coins from your balance',
 
   commands: 'pay',
   cooldown: '30s',

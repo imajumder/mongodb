@@ -3,10 +3,11 @@ module.exports = {
     cooldown: '5s',
     guildOnly: true,
 
-    commands: ['cool', 'howcool', 'Cool', 'Howcool', 'HowCool', 'howCool', 'HOWCOOL', 'HOWcool', 'howCOOl', 'COOL'],
+    commands: ['cool', 'howcool'],
     minArgs: 1,
     maxArgs: 1,
-    expectedArgs: '<mention>',
+    description: 'Tells how cool the targeted user is',
+    expectedArgs: '[mention]',
     callback: ({ message, args, text, client, prefix, instance }) => {
    
     const mention = args[0]

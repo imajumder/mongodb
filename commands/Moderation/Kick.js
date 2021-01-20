@@ -4,10 +4,10 @@ module.exports = {
     globalCooldown: '1m',
     guildOnly: true,
 
-
+    description: 'Kicks the targeted user',
     minArgs: 1,
     maxArgs: 1,
-    expectedArgs: '',
+    expectedArgs: '[Mention]',
     callback: async ({ message, args, text, client, prefix, instance }) => {
     
 

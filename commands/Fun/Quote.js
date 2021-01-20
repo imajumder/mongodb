@@ -2,7 +2,8 @@ const fs = require('fs')
 module.exports = {
     category: 'Fun',
     cooldown: '10s',
-    commands: ['quote', 'q'],
+    description: 'Posts a random inspirational quote to cheer you up',
+    commands: ['quote'],
     minArgs: 0,
     maxArgs: 0,
     expectedArgs: '',

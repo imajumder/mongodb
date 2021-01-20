@@ -2,11 +2,12 @@ module.exports = {
   category: 'Moderation',
     commands: ['ban'],
     globalCooldown: '1m',
+    description: 'Bans the targeted member',
     guildOnly: true,
 
     minArgs: 1,
     maxArgs: 1,
-    expectedArgs: '',
+    expectedArgs: '[Mention]',
     callback: async ({ message, args, text, client, prefix, instance }) => {
     
 
