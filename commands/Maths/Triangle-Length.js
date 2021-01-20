@@ -5,8 +5,9 @@ module.exports = {
     cooldown: '10s',
     guildOnly: false,
 
+    description: 'Finds the length of the triangle',
 
-    expectedArgs: '<side> <side> <side>',
+    expectedArgs: '[ side ] [ side ] [ side ]',
     permissionError: 'You need Send Messages permissions to run this command',
     minArgs: 3,
     maxArgs: 3,

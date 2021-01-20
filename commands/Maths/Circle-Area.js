@@ -4,8 +4,8 @@ module.exports = {
     cooldown: '10s',
     guildOnly: false,
 
-
-    expectedArgs: '<number to be added> <number to be added>',
+    description: 'Finds the area of the circle using the inputed radius',
+    expectedArgs: '[ number to be used as radius ]',
     permissionError: 'You need Send Messages permissions to run this command',
     minArgs: 1,
     maxArgs: 1,

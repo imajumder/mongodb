@@ -4,8 +4,8 @@ module.exports = {
     commands: ['sqrlgt', 'squarelength'],
     cooldown: '10s',
     guildOnly: false,
-
-    expectedArgs: '<number for length of each side>',
+    description: 'Finds the perimeter of the square',
+    expectedArgs: '[ number for length of each side ]',
     permissionError: 'You need Send Messages permissions to run this command',
     minArgs: 1,
     maxArgs: 1,

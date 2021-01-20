@@ -3,9 +3,9 @@ module.exports = {
     commands: ['reclgt', 'rectanglelength'],
     cooldown: '10s',
     guildOnly: false,
+    description: 'Finds the perimeter of the rectangle ',
 
-
-    expectedArgs: '<number for length> <number for breadth>',
+    expectedArgs: '[ number for length ]  [ number for breadth ]',
     permissionError: 'You need Send Messages permissions to run this command',
     minArgs: 2,
     maxArgs: 2,

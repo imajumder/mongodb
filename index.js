@@ -41,12 +41,9 @@ client.on('ready', () => {
   setInterval(() => {
       client.user.setActivity(`${client.guilds.cache.size} Servers | ?help`, { type: 'WATCHING' })
   }, 60000); 
-  // See the "Language Support" section of this documentation
-  // An empty string = ignored
+  
   const messagesPath = ''
 
-  // Used to configure the database connection.
-  // These are the default options but you can overwrite them
   const dbOptions = {
     keepAlive: true,
     useNewUrlParser: true,
@@ -62,19 +59,15 @@ client.on('ready', () => {
      'requiredrole'
   ]
 
-  // Initialize WOKCommands with specific folders and MongoDB
   new WOKCommands(client, {
     commandsDir: 'commands',
     featureDir: 'features',
     messagesPath,
-    showWarns: true, // Show start up warnings
+    showWarns: true, 
     dbOptions
   })
-    // Set your MongoDB connection path
-    .setMongoPath('mongodb+srv://Discordbot-Owner:BhXaZosCY6OYbHui@mongodb-discord.oejgy.mongodb.net/MongoDB-Discord?retryWrites=true')
-    // Set the default prefix for your bot, it is ! by default
+  
     .setDefaultPrefix('?')
-    // Set the embed color for your bot. The default help menu will use this. This hex value can be a string too
     .setColor(000000)
     .setBotOwner('614076042901979156')
     .setCategorySettings([

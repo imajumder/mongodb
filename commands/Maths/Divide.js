@@ -5,8 +5,8 @@ module.exports = {
     cooldown: '10s',
     guildOnly: false,
 
-
-    expectedArgs: '<dividend> <divisor>',
+    description: 'Diveides the 2 inputed numbers',
+    expectedArgs: '[ dividend ] [ divisor ]',
     permissionError: 'You need Send messages permissions to run this command',
     minArgs: 2,
     maxArgs: 2,

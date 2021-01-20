@@ -4,9 +4,10 @@ module.exports = {
     commands: ['triarea', 'trianglearea'],
     cooldown: '10s',
     guildOnly: false,
+    description: 'Finds the area of the triangle',
 
 
-    expectedArgs: '<height> <base>',
+    expectedArgs: ' [ height ]  [ base ]',
     permissionError: 'You need Send Messages permissions to run this command',
     minArgs: 2,
     maxArgs: 2,

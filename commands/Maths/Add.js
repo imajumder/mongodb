@@ -4,8 +4,9 @@ module.exports = {
     commands: ['add', 'addition'],
     cooldown: '10s',
     guildOnly: false,
+    description: 'Adds the 2 inputed numbers',
 
-    expectedArgs: '<number to be added> <number to be added>',
+    expectedArgs: '[ number to be added ] [ number to be added ]',
     permissionError: 'You need Send Messages permissions to run this command',
     minArgs: 2,
     maxArgs: 2,

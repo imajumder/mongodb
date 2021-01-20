@@ -5,8 +5,8 @@ module.exports = {
     cooldown: '10s',
     guildOnly: false,
 
-
-    expectedArgs: '<number to be subtracted from> <number to subtracted>',
+    description: 'Subtracts the 2 inputed numbers',
+    expectedArgs: '[ number to be subtracted from ] [ number to subtracted ]',
     permissionError: 'You need Send Messages permissions to run this command',
     minArgs: 2,
     maxArgs: 2,

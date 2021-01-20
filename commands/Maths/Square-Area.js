@@ -4,8 +4,9 @@ module.exports = {
     commands: ['sqrarea', 'squarearea'],
     cooldown: '10s',
     guildOnly: false,
+    description: 'Finds the area of the square',
 
-    expectedArgs: '<number for length of each side>',
+    expectedArgs: '[ number for length of each side ]',
     permissionError: 'You need Send Messages permissions to run this command',
     minArgs: 1,
     maxArgs: 1,

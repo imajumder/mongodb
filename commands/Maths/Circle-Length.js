@@ -4,9 +4,9 @@ module.exports = {
     commands: ['cirlgt', 'circlelength'],
     cooldown: '10s',
     guildOnly: false,
+    description: 'Finds the circumference of the cirle with the inputed radius',
 
-
-    expectedArgs: '<number to be added> <number to be added>',
+    expectedArgs: '[ number to be added ] [ number to be added ]',
     permissionError: 'You need Send Messages permissions to run this command',
     minArgs: 1,
     maxArgs: 1,

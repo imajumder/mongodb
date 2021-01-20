@@ -5,8 +5,8 @@ module.exports = {
     cooldown: '10s',
     guildOnly: false,
 
-
-    expectedArgs: '<base> <exponent>',
+    description: 'Finds the value of the inputed exponent as a whole number',
+    expectedArgs: '[ base ] [ exponent ]',
     permissionError: 'You need Send Messages permissions to run this command',
     minArgs: 2,
     maxArgs: 2,

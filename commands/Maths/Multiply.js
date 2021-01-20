@@ -5,8 +5,8 @@ module.exports = {
     cooldown: '10s',
     guildOnly: false,
 
-
-    expectedArgs: '<number to be multiplied> <number to be multiplied>',
+    description: 'Multiplies the 2 inputed numbers',
+    expectedArgs: '[ number to be multiplied ] [ number to be multiplied ]',
     permissionError: 'You need send messages permissions to run this command',
     minArgs: 2,
     maxArgs: 2,

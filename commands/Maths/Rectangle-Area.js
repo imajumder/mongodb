@@ -5,8 +5,8 @@ module.exports = {
     cooldown: '10s',
 
     guildOnly: false,
-
-    expectedArgs: '<number for length> <number for breadth>',
+    description: 'Finds the area of the recatangle',
+    expectedArgs: '[ number for length ]  [ number for breadth ]',
     permissionError: 'You need Send Messages permissions to run this command',
     minArgs: 2,
     maxArgs: 2,
