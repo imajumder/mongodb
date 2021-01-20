@@ -33,19 +33,14 @@ const connectToMongoDB = async () => {
 
 connectToMongoDB()
 
-client.on('ready', async () => {
-  console.log('The client is ready!')
- 
-    setInterval(() => {
-        client.user.setActivity(`${client.guilds.cache.size} Servers | ?help`, { type: 'WATCHING' })
-    }, 60000); 
-
-
-
-
-})
 
 client.on('ready', () => {
+
+  console.log('The client is ready!')
+ 
+  setInterval(() => {
+      client.user.setActivity(`${client.guilds.cache.size} Servers | ?help`, { type: 'WATCHING' })
+  }, 60000); 
   // See the "Language Support" section of this documentation
   // An empty string = ignored
   const messagesPath = ''
