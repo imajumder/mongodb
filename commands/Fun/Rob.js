@@ -29,7 +29,7 @@ module.exports = {
     if (id === message.author.id) {
     const Respo = Math.floor(Math.random() * selfname.length);
     message.reply(selfname[Respo]);    
-   }else if (id === '780839681239154729') {
+   }else if (id === '781466481929224203') {
     const Respons = Math.floor(Math.random() * botname.length);
     message.reply(botname[Respons]);    
    }else  {
