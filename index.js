@@ -24,19 +24,6 @@ const mongo = require('./Util/mongo');
 
 const cron = require('cron')
 
-const connectToMongoDB = async () => {
-  await mongo().then(mongoose => {
-    try {
-      console.log('Connected to mongoose')
-    } finally {
-      mongoose.connection.close()
-    }
-  })
-}
-
-connectToMongoDB()
-
-
 client.on('ready', () => {
 
   console.log('The client is ready!')
