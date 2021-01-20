@@ -3,8 +3,8 @@ const  mongoPath = 'mongodb+srv://Discordbot-Owner:BhXaZosCY6OYbHui@mongodb-disc
 
 module.exports = async () => {
   await mongoose.connect(mongoPath, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+    useNewUrlParser: false,
+    useUnifiedTopology: false,
   })
   return mongoose
 }
