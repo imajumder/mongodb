@@ -13,8 +13,6 @@ const config = require('./config.json')
 
 const fs = require('fs')
 
-
-
 const path = require('path')
 
 client.setMaxListeners(50);
@@ -28,7 +26,8 @@ const connectToMongoDB = async () => {
     try {
       console.log('Connected to mongoose')
     } finally {
-          }
+      mongoose.connection.close()
+    }
   })
 }
 
