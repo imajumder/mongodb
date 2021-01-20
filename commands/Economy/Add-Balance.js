@@ -5,6 +5,11 @@ module.exports = {
   commands: ['addbalance', 'addbal'],
   description: 'Adds a certain amount of coins to the mentioned users balance',
   guildOnly: true,
+  init: (client, instance) => {
+    instance.on('databaseConnected', (connection, state) => {
+        console.log("State :", state)
+    })
+ },
 
   cooldown: '1m',
   minArgs: 2,
