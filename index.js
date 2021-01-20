@@ -28,8 +28,7 @@ const connectToMongoDB = async () => {
     try {
       console.log('Connected to mongoose')
     } finally {
-      mongoose.connection.close()
-    }
+          }
   })
 }
 
@@ -65,7 +64,7 @@ client.on('ready', () => {
     dbOptions
   })
     // Set your MongoDB connection path
-    .setMongoPath(connectToMongoDB)
+    .setMongoPath(config.mongoPath)
     // Set the default prefix for your bot, it is ! by default
     .setDefaultPrefix('?')
     // Set the embed color for your bot. The default help menu will use this. This hex value can be a string too
