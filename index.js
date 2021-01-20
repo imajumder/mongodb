@@ -65,6 +65,7 @@ client.on('ready', () => {
     // Set your MongoDB connection path
     .setMongoPath('mongodb+srv://Discordbot-Owner:BhXaZosCY6OYbHui@mongodb-discord.oejgy.mongodb.net/MongoDB-Discord?retryWrites=true')
     // Set the default prefix for your bot, it is ! by default
+    .setDefaultPrefix('?')
     // Set the embed color for your bot. The default help menu will use this. This hex value can be a string too
     .setColor(000000)
     .setBotOwner('614076042901979156')
