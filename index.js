@@ -54,6 +54,14 @@ client.on('ready', () => {
     useFindAndModify: false,
   }
 
+  const disabledDefaultCommands = [
+    // 'help',
+     'command',
+     'language',
+     'prefix',
+     'requiredrole'
+  ]
+
   // Initialize WOKCommands with specific folders and MongoDB
   new WOKCommands(client, {
     commandsDir: 'commands',

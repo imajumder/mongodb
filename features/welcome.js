@@ -1,6 +1,6 @@
-const mongo = require('./../../Util/mongo')
-const command = require('./../../Util/command')
-const welcomeSchema = require('./../../Schemas/Welcome-schema')
+const mongo = require('../Util/mongo')
+const command = require('../Util/command')
+const welcomeSchema = require('../Schemas/Welcome-schema')
 
 module.exports = (client) => {
   //!setwelcome <message>
