@@ -1,4 +1,7 @@
 const WOKCommands = require('wokcommands')
+
+const mongoose = require('mongoose')
+
 require('dotenv').config()
 
 const Discord = require('discord.js');
@@ -37,6 +40,10 @@ connectToMongoDB()
 client.on('ready', () => {
 
   console.log('The client is ready!')
+
+  const URIS = ('mongodb+srv://Discordbot-Owner:BhXaZosCY6OYbHui@mongodb-discord.oejgy.mongodb.net/MongoDB-Discord?retryWrites=true')
+
+  mongoose.connect(URIS,{ useNewUrlParser:true, useUnifiedTopology:true});  
  
   setInterval(() => {
       client.user.setActivity(`${client.guilds.cache.size} Servers | ?help`, { type: 'WATCHING' })
