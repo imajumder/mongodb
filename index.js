@@ -34,6 +34,7 @@ const connectToMongoDB = async () => {
   })
 }
 
+connectToMongoDB()
 
 
 client.on('ready', () => {
