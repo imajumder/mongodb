@@ -11,5 +11,4 @@ const welcomeSchema = mongoose.Schema({
   text: reqString,
 })
 
-
-module.exports = welcomeSchema;
+module.exports = mongoose.model('welcome-channels', welcomeSchema)

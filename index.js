@@ -24,15 +24,23 @@ const mongo = require('./Util/mongo');
 
 const cron = require('cron')
 
+const connectToMongoDB = async () => {
+  await mongo().then(mongoose => {
+    try {
+      console.log('Connected to mongoose')
+    } finally {
+      mongoose.connection.close()
+    }
+  })
+}
+
+connectToMongoDB()
+
+
 client.on('ready', () => {
 
   console.log('The client is ready!')
 
-const conn = mongoose.createConnection(process.env.MONGODB_URI);
-conn.model('profile', require('./Schemas/Profile-Schema'));
-conn.model('welcome-channels', require('./Schemas/Welcome-schema'))
-
-module.exports = conn;
  
   setInterval(() => {
       client.user.setActivity(`${client.guilds.cache.size} Servers | ?help`, { type: 'WATCHING' })
@@ -64,7 +72,6 @@ module.exports = conn;
   })
   
     .setDefaultPrefix('?')
-    .setMongoPath(process.env.MONGODB_URI)
     .setColor(000000)
     .setBotOwner('614076042901979156')
     .setCategorySettings([
