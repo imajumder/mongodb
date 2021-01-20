@@ -1,0 +1,12 @@
+{
+    "languages": ["english", "spanish", "arabic", "chinese", "portuguese"],
+    "translations": {
+      "THE_SUM_IS": {
+        "english": "The sum is",
+        "spanish": "La suma es",
+        "arabic": "المجموع",
+        "chinese": "总和是",
+        "portuguese": "A soma é"
+      }
+    }
+}
