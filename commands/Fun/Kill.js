@@ -1,10 +1,13 @@
 module.exports = {
-  commands: ['kill', 'RIP', 'rip'],
+  category: 'Fun',
+  guildOnly: true,
+  cooldown: '5s',
+  commands: ['kill'],
   minArgs: 1,
   maxArgs: 1,
   expectedArgs: '[mention]',
   
-  callback: (message, client) => {
+  callback: ({ message, args, text, client, prefix, instance }) => {
      
     if (!message.mentions.users.size) {
         return message.reply();
@@ -41,7 +44,7 @@ module.exports = {
         if (id === selfid) {
         let same = Math.floor(Math.random() * sameuser.length);
       message.reply(sameuser [same]);
-      }else if (id === '781466481929224203') {
+      }else if (id === '780839681239154729') {
         let samebot = Math.floor(Math.random() * botping.length);
       message.reply(botping [samebot]);
       }else {

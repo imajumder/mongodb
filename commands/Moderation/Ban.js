@@ -1,9 +1,13 @@
 module.exports = {
+  category: 'Moderation',
     commands: ['ban'],
+    globalCooldown: '1m',
+    guildOnly: true,
+
     minArgs: 1,
     maxArgs: 1,
     expectedArgs: '',
-    callback: async (message, arguments, con, client) => {
+    callback: async ({ message, args, text, client, prefix, instance }) => {
     
 
     const { member, mentions } = message

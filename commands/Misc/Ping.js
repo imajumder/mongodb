@@ -1,6 +1,9 @@
 module.exports = {
+  category: 'Configuration',
   commands: 'ping',
-  callback: (message, arguments, text, client) => {
+  guildOnly: false,
+  cooldown: '10s',
+  callback: ({ message, args, text, client, prefix, instance }) => {
     message.reply('Calculating ping...').then((resultMessage) => {
       const ping = resultMessage.createdTimestamp - message.createdTimestamp
 

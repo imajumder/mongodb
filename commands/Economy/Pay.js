@@ -1,11 +1,15 @@
 const economy = require('./../../Util/economy')
 
 module.exports = {
+  category: 'Economy',
+  guildOnly: true,
+
   commands: 'pay',
+  cooldown: '30s',
   minArgs: 2,
   maxArgs: 2,
   expectedArgs: "<Target user's @> <Amount of coins>",
-  callback: async (message, arguments, text) => {
+  callback: async ({ message, args, text, client, prefix, instance }) => {
     const { guild, member } = message
 
     const target = message.mentions.users.first()
@@ -33,7 +37,7 @@ module.exports = {
       return
     }
 
-    const coinsToGive = arguments[1]
+    const coinsToGive = args[1]
     if (isNaN(coinsToGive)) {
       message.reply('Please provide a valid number of coins to give.')
       return

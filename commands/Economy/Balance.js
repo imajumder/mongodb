@@ -1,12 +1,16 @@
 const economy = require('./../../Util/economy')
 
 module.exports = {
+  category: 'Economy',
   commands: ['bal', 'balance'],
+  guildOnly: true,
+
+  cooldown: '15s',
   maxArgs: 1,
   expectedArgs: "<The target's @>",
   permissionError: 'You must have Send messages permission to use this command',
   permissions: 'SEND_MESSAGES',
-  callback: async (message, arguments) => {
+  callback: async ({ message, args, text, client, prefix, instance }) => {
 
     const target = message.mentions.users.first() || message.author
     const targetId = target.id

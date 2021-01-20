@@ -1,13 +1,17 @@
 const economy = require('./../../Util/economy')
 
 module.exports = {
+  category: 'Economy',
   commands: ['addbalance', 'addbal'],
+  guildOnly: true,
+
+  cooldown: '1m',
   minArgs: 2,
   maxArgs: 2,
   expectedArgs: "<The target's @> <coin amount>",
   permissionError: 'You must be an administrator to use this command.',
   permissions: 'ADMINISTRATOR',
-  callback: async (message, arguments) => {
+  callback: async ({ message, args, text, client, prefix, instance }) => {
     const mention = message.mentions.users.first()
 
     if (!mention) {
@@ -15,7 +19,7 @@ module.exports = {
       return
     }
 
-    const coins = arguments[1]
+    const coins = args[1]
     if (isNaN(coins)) {
       message.reply('Please provide a valid numnber of coins.')
       return

@@ -1,12 +1,16 @@
 const economy = require("../../Util/economy");
 
 module.exports = {
+  category: 'Fun',
+  cooldown: '15s',
+  guildOnly: true,
+
   commands: ['rob'],
   minArgs: 1,
   maxArgs: 1,
   expectedArgs: '[mention]',
   
-  callback: async (message, client, arguments) => {
+  callback: async ({ message, args, text, client, prefix, instance }) => {
 
     let taggedUser = message.mentions.users.first();
     let bal = 100

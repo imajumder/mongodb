@@ -1,6 +1,13 @@
+const WOKCommands = require('wokcommands')
+require('dotenv').config()
+
 const Discord = require('discord.js');
 
-const client = new Discord.Client();
+const client = new Discord.Client({
+  partials: ['MESSAGE', 'REACTION'],
+})
+
+
 
 const config = require('./config.json')
 
@@ -13,8 +20,6 @@ client.setMaxListeners(50);
 const mongo = require('./Util/mongo');
 
 const cron = require('cron')
-
-const loadfeatures = require('./features/load-features')
 
 const connectToMongoDB = async () => {
   await mongo().then(mongoose => {
@@ -36,29 +41,62 @@ client.on('ready', async () => {
     }, 60000); 
 
 
-  const baseFile = 'command-base.js'
-  const commandBase = require(`./commands/${baseFile}`)
 
-  const readCommands = (dir) => {
-    const files = fs.readdirSync(path.join(__dirname, dir))
-    for (const file of files) {
-      const stat = fs.lstatSync(path.join(__dirname, dir, file))
-      if (stat.isDirectory()) {
-        readCommands(path.join(dir, file))
-      } else if (file !== baseFile) {
-        const option = require(path.join(__dirname, dir, file))
-        commandBase(client, option)
-      }
-    }
-  }
-
-  readCommands('commands')
-
-  loadfeatures(client)
 
 })
 
+client.on('ready', () => {
+  // See the "Language Support" section of this documentation
+  // An empty string = ignored
+  const messagesPath = ''
 
+  // Used to configure the database connection.
+  // These are the default options but you can overwrite them
+  const dbOptions = {
+    keepAlive: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+  }
 
+  // Initialize WOKCommands with specific folders and MongoDB
+  new WOKCommands(client, {
+    commandsDir: 'commands',
+    featureDir: 'features',
+    messagesPath,
+    showWarns: true, // Show start up warnings
+    dbOptions
+  })
+    // Set your MongoDB connection path
+    .setMongoPath("mongodb+srv://Discordbot-Owner:BhXaZosCY6OYbHui@mongodb-discord.oejgy.mongodb.net/MongoDB-Discord?retryWrites=true&w=majority")
+    // Set the default prefix for your bot, it is ! by default
+    .setDefaultPrefix('?')
+    // Set the embed color for your bot. The default help menu will use this. This hex value can be a string too
+    .setColor(000000)
+    .setBotOwner('614076042901979156')
+    .setCategorySettings([
+      {
+        name: 'Fun',
+        emoji: '🤪'
+      },
+      {
+        name: 'Economy',
+        emoji: '💳'
+      },
+      {
+        name: 'Configuration',
+        emoji: '🖥️',
+      },
+      {
+        name: 'Maths',
+        emoji: '🧮',
+      },
+      {
+        name: 'Moderation',
+        emoji: '👑',
+      }
+    ])
+})
 
+    
 client.login(config.token)
