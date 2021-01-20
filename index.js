@@ -48,9 +48,9 @@ client.on('ready', () => {
   // Used to configure the database connection.
   // These are the default options but you can overwrite them
   const dbOptions = {
-    keepAlive: true,
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+    keepAlive: false,
+    useNewUrlParser: false,
+    useUnifiedTopology: false,
     useFindAndModify: false,
   }
 
