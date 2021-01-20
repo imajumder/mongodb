@@ -41,9 +41,11 @@ client.on('ready', () => {
 
   console.log('The client is ready!')
 
-  const URIS = ('mongodb+srv://Discordbot-Owner:BhXaZosCY6OYbHui@mongodb-discord.oejgy.mongodb.net/MongoDB-Discord?retryWrites=true')
+const conn = mongoose.createConnection(process.env.MONGODB_URI);
+conn.model('profile', require('./Schemas/Profile-Schema'));
+conn.model('welcome-channels', require('./Schemas/Welcome-schema'))
 
-  mongoose.connect(URIS,{ useNewUrlParser:true, useUnifiedTopology:true});  
+module.exports = conn;
  
   setInterval(() => {
       client.user.setActivity(`${client.guilds.cache.size} Servers | ?help`, { type: 'WATCHING' })

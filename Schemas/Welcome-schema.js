@@ -11,7 +11,5 @@ const welcomeSchema = mongoose.Schema({
   text: reqString,
 })
 
-const con = mongoose.createConnection(process.env.MONGODB_URI);
-con.model('welcome-channels', welcomeSchema);
 
-module.exports = con;
+module.exports = welcomeSchema;
