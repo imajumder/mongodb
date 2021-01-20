@@ -51,7 +51,7 @@ client.on('ready', () => {
     keepAlive: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: true,
+    useFindAndModify: false,
   }
 
   // Initialize WOKCommands with specific folders and MongoDB
