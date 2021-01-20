@@ -53,10 +53,10 @@ client.on('ready', () => {
 
   const disabledDefaultCommands = [
     // 'help',
-     'command',
-     'language',
-     'prefix',
-     'requiredrole'
+     //'command',
+    // 'language',
+     //'prefix',
+     //'requiredrole'
   ]
 
   new WOKCommands(client, {
@@ -68,6 +68,7 @@ client.on('ready', () => {
   })
   
     .setDefaultPrefix('?')
+    .setMongoPath(process.env.MONGODB_URI)
     .setColor(000000)
     .setBotOwner('614076042901979156')
     .setCategorySettings([

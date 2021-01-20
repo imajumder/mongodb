@@ -14,4 +14,7 @@ const profileSchema = mongoose.Schema({
   },
 })
 
-module.exports = mongoose.model('profiles', profileSchema)
+const conn = mongoose.createConnection(process.env.MONGODB_URI);
+conn.model('profile', profileSchema);
+
+module.exports = conn;
