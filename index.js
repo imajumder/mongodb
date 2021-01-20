@@ -21,6 +21,19 @@ const mongo = require('./Util/mongo');
 
 const cron = require('cron')
 
+const connectToMongoDB = async () => {
+  await mongo().then(mongoose => {
+    try {
+      console.log('Connected to mongoose')
+    } finally {
+      mongoose.connection.close()
+    }
+  })
+}
+
+connectToMongoDB()
+
+
 client.on('ready', () => {
 
   console.log('The client is ready!')
@@ -50,7 +63,7 @@ client.on('ready', () => {
     dbOptions
   })
     // Set your MongoDB connection path
-    .setMongoPath(process.env.MONGODB_URI)
+    .setMongoPath(provess.env.MONGODB_URI)
     // Set the default prefix for your bot, it is ! by default
     .setDefaultPrefix('?')
     // Set the embed color for your bot. The default help menu will use this. This hex value can be a string too
@@ -81,4 +94,4 @@ client.on('ready', () => {
 })
 
     
-client.login(process.env.token)
+client.login(config.token)
