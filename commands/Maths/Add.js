@@ -1,4 +1,4 @@
-const language = require('../language')
+const language = require('./../../Util/Language')
 
 module.exports = {
   category: 'Maths',
