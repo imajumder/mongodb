@@ -99,5 +99,11 @@ client.on('ready', () => {
     ])
 })
 
+client.on('message', async message => {
+  if(message.content.startsWith('?lang')) {
+    return
+  }
+})
+
     
 client.login(config.token)
