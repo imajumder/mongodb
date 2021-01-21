@@ -1,7 +1,4 @@
 const WOKCommands = require('wokcommands')
-
-const mongoose = require('mongoose')
-
 require('dotenv').config()
 
 const Discord = require('discord.js');
@@ -14,15 +11,9 @@ const client = new Discord.Client({
 
 const config = require('./config.json')
 
-const fs = require('fs')
-
-const path = require('path')
-
 client.setMaxListeners(50);
 
 const mongo = require('./Util/mongo');
-
-const cron = require('cron')
 
 const connectToMongoDB = async () => {
   await mongo().then(mongoose => {
@@ -98,12 +89,6 @@ client.on('ready', () => {
         emoji: '👑',
       }
     ])
-})
-
-client.on('message', async message => {
-  if(message.content.startsWith('?lang')) {
-    return
-  }
 })
 
     
