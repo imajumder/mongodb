@@ -1,14 +1,15 @@
 module.exports = {
-  category: 'Moderation',
+ 
     commands: ['kick'],
-    globalCooldown: '1m',
-    guildOnly: true,
+    
 
     description: 'Kicks the targeted user',
+    cooldown: '30',
+
     minArgs: 1,
     maxArgs: 1,
     expectedArgs: '[Mention]',
-    callback: async ({ message, args, text, client, prefix, instance }) => {
+    callback: async (message) => {
     
 
         const { member, mentions } = message

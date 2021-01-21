@@ -1,10 +1,9 @@
 module.exports = {
-  category: 'Configuration',
   commands: 'ping',
-  guildOnly: false,
+  cooldown: '5',
+
   description: 'Shows the bot\'s ping / latency',
-  cooldown: '10s',
-  callback: ({ message, args, text, client, prefix, instance }) => {
+  callback: (message) => {
     message.reply('Calculating ping...').then((resultMessage) => {
       const ping = resultMessage.createdTimestamp - message.createdTimestamp
 

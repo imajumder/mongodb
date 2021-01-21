@@ -1,14 +1,12 @@
 module.exports = {
-  category: 'Fun',
-  guildOnly: true,
-  cooldown: '5s',
-  description: 'Kills the targeted user.....',
+   description: 'Kills the targeted user.....',
   commands: ['kill', 'rip'],
+  cooldown: '5',
   minArgs: 1,
   maxArgs: 1,
   expectedArgs: '[mention]',
   
-  callback: ({ message, args, text, client, prefix, instance }) => {
+  callback: ( message) => {
      
     if (!message.mentions.users.size) {
         return message.reply();

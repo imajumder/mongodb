@@ -2,21 +2,20 @@ module.exports = {
   category: 'Maths',
 
     commands: ['trilgt', 'trianglelength'],
-    cooldown: '10s',
+    cooldown: '10',
     guildOnly: false,
 
-    description: 'Finds the length of the triangle',
 
-    expectedArgs: '[ side ] [ side ] [ side ]',
+    expectedArgs: '<side> <side> <side>',
     permissionError: 'You need Send Messages permissions to run this command',
     minArgs: 3,
     maxArgs: 3,
-    callback: ({ message, args, text, client, prefix, instance }) => {
-      const num1 = +args[0]
+    callback: ( message, arguments) => {
+      const num1 = +arguments[0]
 
-      const num2 = +args[1]
+      const num2 = +arguments[1]
 
-      const num3 = +args[2]
+      const num3 = +arguments[2]
 
       const num4 = num1 + num2 + num3
   

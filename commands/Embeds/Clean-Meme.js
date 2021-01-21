@@ -3,16 +3,14 @@ const Discord = require('discord.js');
 const got = require('got')
 
 module.exports = {
-    category: 'Fun',
-    commands: ['meme'],
-    guildOnly: true,
-    cooldown: '20s',
+    commands: ['meme', 'reddit'],
+    cooldown: '10',
     maxArgs: 0,
     description: 'Posts a random meme from r/memes',
     expectedArgs: "",
     permissionError: 'You must have Send messages permission to use this command',
     permissions: 'SEND_MESSAGES',
-    callback: async ({message}) => {
+    callback: async (message) => {
 
             const embed = new Discord.MessageEmbed()
             got('https://www.reddit.com/r/memes/random/.json').then(response => {

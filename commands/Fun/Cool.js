@@ -1,16 +1,13 @@
 module.exports = {
-    category: 'Fun',
-    cooldown: '5s',
-    guildOnly: true,
-
     commands: ['cool', 'howcool'],
+    cooldown: '5',
     minArgs: 1,
     maxArgs: 1,
     description: 'Tells how cool the targeted user is',
     expectedArgs: '[mention]',
-    callback: ({ message, args, text, client, prefix, instance }) => {
+    callback: ( message, arguments) => {
    
-    const mention = args[0]
+    const mention = arguments[0]
 
     const ment = message.mentions.users.first();
 

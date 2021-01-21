@@ -1,19 +1,17 @@
-const WOKCommands = require('wokcommands')
-require('dotenv').config()
-
 const Discord = require('discord.js');
 
-const client = new Discord.Client({
-  partials: ['MESSAGE', 'REACTION'],
-})
-
-
+const client = new Discord.Client;
 
 const config = require('./config.json')
 
 client.setMaxListeners(50);
 
 const mongo = require('./Util/mongo');
+
+const loadfeatures = require('./features/load-features')
+
+const loadCommands = require('./commands/load-commands')
+
 
 const connectToMongoDB = async () => {
   await mongo().then(mongoose => {
@@ -25,70 +23,20 @@ const connectToMongoDB = async () => {
   })
 }
 
-connectToMongoDB
+connectToMongoDB()
 
-
-
-client.on('ready', () => {
-
+client.on('ready', async () => {
   console.log('The client is ready!')
-
  
-  setInterval(() => {
-      client.user.setActivity(`${client.guilds.cache.size} Servers | ?help`, { type: 'WATCHING' })
-  }, 60000); 
-  
-  const messagesPath = ''
+    setInterval(() => {
+        client.user.setActivity(`${client.guilds.cache.size} Servers | ?help`, { type: 'WATCHING' })
+    }, 60000); 
 
-  const dbOptions = {
-    keepAlive: true,
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-  }
 
-  const disabledDefaultCommands = [
-    // 'help',
-     'command',
-     'language',
-     'prefix',
-    'requiredrole'
-  ]
+  loadfeatures(client)
 
-  new WOKCommands(client, {
-    commandsDir: 'commands',
-    featureDir: 'features',
-    messagesPath,
-    showWarns: true, 
-    dbOptions,
-    disabledDefaultCommands
-  })
-  
-    .setDefaultPrefix('?')
-    .setColor(000000)
-    .setBotOwner('614076042901979156')
-    .setCategorySettings([
-      {
-        name: 'Fun',
-        emoji: '🤪'
-      },
-      {
-        name: 'Economy',
-        emoji: '💳'
-      },
-      {
-        name: 'Configuration',
-        emoji: '🖥️',
-      },
-      {
-        name: 'Maths',
-        emoji: '🧮',
-      },
-      {
-        name: 'Moderation',
-        emoji: '👑',
-      }
-    ])
+  loadCommands(client)
+
 })
 
     

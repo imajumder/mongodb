@@ -1,13 +1,12 @@
 const fs = require('fs')
 module.exports = {
-    category: 'Fun',
-    cooldown: '10s',
-    description: 'Posts a random inspirational quote to cheer you up',
-    commands: ['quote'],
+      description: 'Posts a random inspirational quote to cheer you up',
+    commands: ['quote', 'q'],
+    cooldown: '10',
     minArgs: 0,
     maxArgs: 0,
     expectedArgs: '',
-    callback: ({ message, args, text, client, prefix, instance }) => {
+    callback: ( message, arguments) => {
 
         const replies = [`"The greatest glory in living lies not in never falling, but in rising every time we fall." -Nelson Mandela`,
         `"The way to get started is to quit talking and begin doing." -Walt Disney`,
