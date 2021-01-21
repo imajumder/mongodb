@@ -34,6 +34,8 @@ const connectToMongoDB = async () => {
   })
 }
 
+connectToMongoDB
+
 
 
 client.on('ready', () => {
@@ -56,10 +58,10 @@ client.on('ready', () => {
 
   const disabledDefaultCommands = [
     // 'help',
-     //'command',
-    // 'language',
-     //'prefix',
-     //'requiredrole'
+     'command',
+     'language',
+     'prefix',
+    'requiredrole'
   ]
 
   new WOKCommands(client, {
@@ -71,7 +73,6 @@ client.on('ready', () => {
   })
   
     .setDefaultPrefix('?')
-    .setMongoPath('mongodb+srv://Discordbot-Owner:BhXaZosCY6OYbHui@mongodb-discord.oejgy.mongodb.net/MongoDB-Discord?retryWrites=true')
     .setColor(000000)
     .setBotOwner('614076042901979156')
     .setCategorySettings([
