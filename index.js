@@ -69,7 +69,8 @@ client.on('ready', () => {
     featureDir: 'features',
     messagesPath,
     showWarns: true, 
-    dbOptions
+    dbOptions,
+    disabledDefaultCommands
   })
   
     .setDefaultPrefix('?')
