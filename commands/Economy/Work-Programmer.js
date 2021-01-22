@@ -2,8 +2,6 @@ const economy = require('../../Util/economy')
 
 const Discord = require('discord.js')
 
-const ms = require('parse-ms')
-
 module.exports = {
   commands: ['job'],
   cooldown: 60,
