@@ -15,7 +15,6 @@ module.exports = {
   callback: async (message, arguments) => {
     let mention = message.mentions.users.first()
 
-    if(!mention) mention = message.author;
 
     let botping = [`Bots don't use money fool..`, `Thank you for your donation but sadly I can't accept that`, `Keys.. Never heard of those`, `Nice try.....`, `Hey thats me...`]
 

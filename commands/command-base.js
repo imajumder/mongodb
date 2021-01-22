@@ -8,6 +8,7 @@
 const mongo = require('./../Util/mongo')
 const commandPrefixSchema = require('./../Schemas/Command-prefix-schema')
 const { prefix: globalPrefix } = require('./../config.json')
+const humanizeDuration = require('humanize-duration')
 const guildPrefixes = {} // { 'guildId' : 'prefix' }
 
 const validatePermissions = (permissions) => {
@@ -140,7 +141,9 @@ module.exports = (client, commandOptions) => {
         //guildId-userId-command
         let cooldownString = `${guild.id}-${member.id}-${commands[0]}`
 
-        let sameuser = [`Woah, Woah there... Chill out a bit try using that command after ${cooldown} seconds.`, `Well... You just used that command, Mind giving me some rest for uh...... ${cooldown} seconds ??`, `Try to use that command after ${cooldown} seconds to help me save some memory..`]
+        const cool = humanizeDuration(cooldown, { units: ['m']})
+
+        let sameuser = [`Woah, Woah there... Chill out a bit try using that command after ${cool} .`, `Well... You just used that command, Mind giving me some rest for uh...... ${cool} ??`, `Try to use that command after ${cool} to help me save some memory..`]
         
         if (cooldown > 0 && recentlyRan.includes(cooldownString)) {
           let same = Math.floor(Math.random() * sameuser.length);
