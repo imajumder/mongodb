@@ -26,10 +26,7 @@ module.exports = {
     embed.setTitle(`${mention.username}'s balance`)
     embed.setThumbnail(mention.displayAvatarURL())
     embed.setDescription(`Keys earned from working : ${coins}`)
-    embed.addFields({
-      name: "Keys Owned Previously",
-      value: `${newCoins - coins} Keys`
-    },
+    embed.addFields(
     {
       name: "Keys Owned Currently",
       value: `${newCoins} Keys`
