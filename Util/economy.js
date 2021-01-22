@@ -1,30 +1,36 @@
-const mongo = require('./mongo')
-const profileSchema = require('./../Schemas/Profile-Schema')
+const mongo = require('../Util/mongo')
+const profileSchema = require('../Schemas/Profile-Schema')
 
 const coinsCache = {} // { 'guildId-userId': coins }
 
-module.exports = ({client}) => {}
+module.exports = (client) => {}
 
-module.exports.addCoins = async (userId, coins) => {
+module.exports.addCoins = async (guildId, userId, coins) => {
   return await mongo().then(async (mongoose) => {
     try {
       
 
       const result = await profileSchema.findOneAndUpdate(
         {
+          guildId,
           userId,
         },
         {
-           userId,
+          guildId,
+          userId,
           $inc: {
             coins,
           },
+        },
+        {
+          upsert: true,
+          new: true,
         }
-        
       )
 
+      
 
-      coinsCache[`${userId}`] = result.coins
+      coinsCache[`${guildId}-${userId}`] = result.coins
 
       return result.coins
     } finally {
@@ -33,17 +39,18 @@ module.exports.addCoins = async (userId, coins) => {
   })
 }
 
-module.exports.getCoins = async (userId) => {
-  const cachedValue = coinsCache[`${userId}`]
+module.exports.getCoins = async (guildId, userId) => {
+  const cachedValue = coinsCache[`${guildId}-${userId}`]
   if (cachedValue) {
     return cachedValue
   }
 
   return await mongo().then(async (mongoose) => {
     try {
-     
+      
 
-      const result = await profileSchema.findOneAndUpdate({
+      const result = await profileSchema.findOne({
+        guildId,
         userId,
       })
 
@@ -53,12 +60,13 @@ module.exports.getCoins = async (userId) => {
       } else {
        
         await new profileSchema({
+          guildId,
           userId,
           coins,
         }).save()
       }
 
-      coinsCache[`${userId}`] = coins
+      coinsCache[`${guildId}-${userId}`] = coins
 
       return coins
     } finally {
@@ -66,3 +74,5 @@ module.exports.getCoins = async (userId) => {
     }
   })
 }
+
+const CurrencyShop = require('../Schemas/Shop-Schema')

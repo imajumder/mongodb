@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const  mongoPath = 'mongodb+srv://Discordbot-Owner:BhXaZosCY6OYbHui@mongodb-discord.oejgy.mongodb.net/MongoDB-Discord?retryWrites=true&w=majority'
+const  mongoPath = 'mongodb://localhost:27017'
 
 module.exports = async () => {
   await mongoose.connect(mongoPath, {
