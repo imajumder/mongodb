@@ -75,4 +75,3 @@ module.exports.getCoins = async (guildId, userId) => {
   })
 }
 
-const CurrencyShop = require('../Schemas/Shop-Schema')
