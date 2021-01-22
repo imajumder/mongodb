@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const db = require("quick.db");
+
 const ms = require("parse-ms");
 
 module.exports = {
@@ -17,6 +18,10 @@ module.exports = {
 
   let daily = await db.fetch(`daily_${message.guild.id}_${user.id}`);
 
+  let bal = db.fetch(`money_${message.guild.id}_${user.id}`)
+
+  if (bal === null)bal = 0
+
   if (daily !== null && timeout - (Date.now() - daily) > 0) {
     let time = ms(timeout - (Date.now() - daily));
   
@@ -29,7 +34,7 @@ module.exports = {
     message.channel.send(timeEmbed)
   }
    else {
-    let bal = db.fetch(`money_${message.guild.id}_${user.id}`)
+    
 
 
     const embed = new Discord.MessageEmbed()

@@ -1,10 +1,13 @@
 const Discord = require("discord.js");
+
 const db = require("quick.db");
+
 const ms = require("parse-ms");
 
 
+
 module.exports = {
-    commands: ['y'],
+    commands: ['profile'],
     cooldown: '10',
     expectedArgs: "[ Mention ]",
     description: "Shows the users current balance",

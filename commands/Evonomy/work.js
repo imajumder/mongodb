@@ -1,9 +1,11 @@
 const Discord = require("discord.js");
+
 const db = require("quick.db");
+
 const ms = require("parse-ms");
 
 module.exports = {
-    commands: ['dail'],
+    commands: ['works'],
     cooldown: '10',
     maxArgs: 1,
     expectedArgs: "[ Mention ]",
@@ -13,6 +15,11 @@ module.exports = {
     let author = await db.fetch(`work_${message.guild.id}_${user.id}`)
 
     let timeout = 600000;
+
+    let bal = db.fetch(`money_${message.guild.id}_${user.id}`)
+
+    if (bal === null) bal = 0;
+
     
     if (author !== null && timeout - (Date.now() - author) > 0) {
         let time = ms(timeout - (Date.now() - author));

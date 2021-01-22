@@ -1,6 +1,7 @@
 const Discord = require('discord.js')
 
-const db = require("quick.db");
+
+const db = require('quick.db')
 
 module.exports = {
     commands: ['bal', 'balance'],
@@ -10,7 +11,7 @@ module.exports = {
     description: "Shows the users current balance",
     callback: async (message) => {
 
-        let user = message.mentions.members.first() || message.author;
+        let user = message.mentions.users.first() || message.author;
 
         let bal = db.fetch(`money_${message.guild.id}_${user.id}`)
       

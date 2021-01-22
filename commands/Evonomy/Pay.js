@@ -1,15 +1,21 @@
 const Discord = require("discord.js");
+
+
 const db = require("quick.db");
+
+
+
 const ms = require("parse-ms");
 
 module.exports = {
-    commands: ['l'],
+    commands: ['pay'],
     cooldown: '10',
-    expectedArgs: "[ Mention ]",
     description: "Shows the users current balance",
     callback: async (message, arguments) => {
 
         let user = message.mentions.users.first() 
+
+        
 
         let member = db.fetch(`money_${message.guild.id}_${message.author.id}`)
       
@@ -30,6 +36,7 @@ module.exports = {
         let embed3 = new Discord.MessageEmbed()
         .setColor("#060103")
         .setDescription(`❌ Hey.. That is an negative integet.`);
+    
       
         if (message.content.includes('-')) { 
             return message.channel.send(embed3)
@@ -44,6 +51,8 @@ module.exports = {
       
 
         let bal = db.fetch(`money_${message.guild.id}_${user.id}`)
+
+        if(bal = null)bal = 0
 
         let embed = new Discord.MessageEmbed()
         embed.setTitle(`${user.username}'s balance`)
