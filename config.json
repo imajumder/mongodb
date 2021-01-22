@@ -1,6 +1,6 @@
 {
-    "token": "NzgwODM5NjgxMjM5MTU0NzI5.X707nw.nnyzQnw3Frc9A24plWIh_g6o5uo",
+    "token": "NzgxNDY2NDgxOTI5MjI0MjAz.X7-DYA.nZRCvDJ7DZYKXH4oYYcJL0oWTJA",
     "prefix": "?",
-    "mongoPath": "mongodb://localhost:27017",
+    "mongoPath": "mongodb+srv://Ishan:qq1VcgfVsyDf05xf@mongodb-discord.oejgy.mongodb.net/MongoDB-Discord?retryWrites=true&w=majority",
     "redisPath":"//redis-12804.c8.us-east-1-4.ec2.cloud.redislabs.com:12804?password=crRC6BIgDx0ftol5PaHH8BImGCgUb41c"
 }
