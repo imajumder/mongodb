@@ -12,29 +12,54 @@ module.exports = {
     const { guild, member } = message
 
     let target = message.mentions.users.first()
+
+    let sameping = [`You wanna pay yourself ??`, `You can't pay yourself dummy...`, `Try mentioning someone except yourself.`]
     
 
-    if(!target) target = message.author;
+    if(target === message.author) {
+
+      let samebot = Math.floor(Math.random() * botping.length);
+      const ping = (sameping [samebot]);
+
+      const embed3 = new Discord.MessageEmbed
+      embed3.color('#060103')
+      embed3.description(`❌ ${ping}`)
+      embed3.footer(`Generated For ${target.username}`)
+      embed3.timestamp()
+    }
 
 
     let botping = [`Bots don't use money fool..`, `Thank you for your donation but sadly I can't accept that`, `Keys.. Never heard of those`, `Nice try.....`, `Hey thats me...`]
 
+    
 
-    if(target.id === '781466481929224203') {
+
+    if(target === message.author.bot) {
       let samebot = Math.floor(Math.random() * botping.length);
-      message.reply(botping [samebot]);
+      const ping = (botping [samebot]);
+      const embed1 = new Discord.MessageEmbed
+      embed1.color('#060103')
+      embed1.description(`❌ ${ping}`)
+      embed1.footer(`Generated For ${target.username}`)
+      embed1.timestamp()
+      message.channel.send(embed)
       return
     }
 
     const coinsToGive = arguments[1]
     if (isNaN(coinsToGive)) {
-      message.reply('Please provide a valid number of coins to give.')
+      message.reply(embed1)
       return
     }
 
     const coinsOwned = await economy.getCoins(guild.id, member.id)
     if (coinsOwned < coinsToGive) {
-      message.reply(`You do not have ${coinsToGive} coins!`)
+      const embed2 = new Discord.MessageEmbed
+      embed2.color('#060103')
+      embed2.description(`❌ You do not have ${coinsToGive} Keys to give ${target.username}`)
+      embed2.footer(`Generated For ${message.author}`)
+      embed2.timestamp()
+      message.channel.send(embed2)
       return
     }
 
