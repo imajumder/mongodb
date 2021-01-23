@@ -16,16 +16,17 @@ module.exports = {
     let sameping = [`You wanna pay yourself ??`, `You can't pay yourself dummy...`, `Try mentioning someone except yourself.`]
     
 
-    if(target === message.author) {
+    if(target.id === message.author.id) {
 
-      let samebot = Math.floor(Math.random() * botping.length);
+      let samebot = Math.floor(Math.random() * sameping.length);
       const ping = (sameping [samebot]);
 
       const embed3 = new Discord.MessageEmbed
-      embed3.color('#060103')
-      embed3.description(`❌ ${ping}`)
-      embed3.footer(`Generated For ${target.username}`)
-      embed3.timestamp()
+      embed3.setTitle('Error Generated')
+      embed3.setColor('#060103')
+      embed3.setDescription(`❌ ${ping}`)
+      embed3.setFooter(`Generated For ${target.username}`)
+      embed3.setTimestamp()
     }
 
 
@@ -38,10 +39,11 @@ module.exports = {
       let samebot = Math.floor(Math.random() * botping.length);
       const ping = (botping [samebot]);
       const embed1 = new Discord.MessageEmbed
-      embed1.color('#060103')
-      embed1.description(`❌ ${ping}`)
-      embed1.footer(`Generated For ${target.username}`)
-      embed1.timestamp()
+      embed1.setTitle('Error Generated')
+      embed1.setColor('#060103')
+      embed1.setDescription(`❌ ${ping}`)
+      embed1.setFooter(`Generated For ${target.username}`)
+      embed1.setTimestamp()
       message.channel.send(embed)
       return
     }
@@ -55,10 +57,11 @@ module.exports = {
     const coinsOwned = await economy.getCoins(guild.id, member.id)
     if (coinsOwned < coinsToGive) {
       const embed2 = new Discord.MessageEmbed
-      embed2.color('#060103')
-      embed2.description(`❌ You do not have ${coinsToGive} Keys to give ${target.username}`)
-      embed2.footer(`Generated For ${message.author}`)
-      embed2.timestamp()
+      embed2.setTitle('Error Generated')
+      embed2.setColor('#060103')
+      embed2.setDescription(`❌ You do not have ${coinsToGive} Keys to give ${target.username}`)
+      embed2.setFooter(`Generated For ${message.author}`)
+      embed2.setTimestamp()
       message.channel.send(embed2)
       return
     }
