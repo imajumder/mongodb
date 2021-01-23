@@ -5,7 +5,8 @@ const Discord = require('discord.js')
 
 module.exports = {
   commands: 'pay',
-  expectedArgs: "<Target user's @> <Amount of coins>",
+  expectedArgs: "[ Targeted User ] [ Amount of coins ]",
+  description: 'Pays the amount of money specified Note: Deductes money from your balance.',
   callback: async (message, arguments, text) => {
     const { guild, member } = message
 
@@ -20,9 +21,9 @@ module.exports = {
       const ping = (sameping [samebot]);
 
       const embed3 = new Discord.MessageEmbed
-      embed3.setTitle('Error Generated')
+      embed3.setTitle('❌ Error Generated')
       embed3.setColor('#060103')
-      embed3.setDescription(`❌ ${ping}`)
+      embed3.setDescription(`${ping}`)
       embed3.setFooter(`Generated For ${message.author.username}`)
       embed3.setTimestamp()
       message.channel.send(embed3)
@@ -39,9 +40,9 @@ module.exports = {
       let samebot = Math.floor(Math.random() * botping.length);
       const ping = (botping [samebot]);
       const embed1 = new Discord.MessageEmbed
-      embed1.setTitle('Error Generated')
+      embed1.setTitle('❌ Error Generated')
       embed1.setColor('#060103')
-      embed1.setDescription(`❌ ${ping}`)
+      embed1.setDescription(`${ping}`)
       embed1.setFooter(`Generated For ${message.author.username}`)
       embed1.setTimestamp()
       message.channel.send(embed1)
@@ -51,9 +52,9 @@ module.exports = {
     const coinsToGive = arguments[1]
     if (isNaN(coinsToGive)) {
       const embed4 = new Discord.MessageEmbed
-      embed4.setTitle('Error Generated')
+      embed4.setTitle('❌ Error Generated')
       embed4.setColor('#060103')
-      embed4.setDescription(`❌ An amount has not been specified..`)
+      embed4.setDescription(`An amount has not been specified..`)
       embed4.setFooter(`Generated For ${message.author.username}`)
       message.reply(embed4)
       return
@@ -62,9 +63,9 @@ module.exports = {
     const coinsOwned = await economy.getCoins(guild.id, member.id)
     if (coinsOwned < coinsToGive) {
       const embed2 = new Discord.MessageEmbed
-      embed2.setTitle('Error Generated')
+      embed2.setTitle('❌ Error Generated')
       embed2.setColor('#060103')
-      embed2.setDescription(`❌ You do not have ${coinsToGive} Keys to give ${target.username}`)
+      embed2.setDescription(`You do not have ${coinsToGive} Keys to give ${target.username}`)
       embed2.setFooter(`Generated For ${message.author.username}`)
       embed2.setTimestamp()
       message.channel.send(embed2)

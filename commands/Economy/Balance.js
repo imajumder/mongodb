@@ -18,7 +18,14 @@ module.exports = {
 
     if(target.id === '781466481929224203') {
       let samebot = Math.floor(Math.random() * botping.length);
-      message.reply(botping [samebot]);
+      const ahaha  = (botping [samebot]);
+      const me = new Discord.MessageEmbed
+      me.setTitle('❌ Error Generated')
+      me.setColor('#060103')
+      me.setDescription(`${ahaha}`)
+      me.setFooter(`Generated For ${message.author.username}`)
+      me.setTimestamp()
+message.channel.send(me)
       return
     }
     
