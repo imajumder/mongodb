@@ -21,7 +21,7 @@ module.exports = {
         const embed = new Discord.MessageEmbed
         embed.setTitle(`❌ Error Generated`)
         embed.setColor('#060103')
-        embed.setDescription(`You do not have enough keys to buy a rare chest. You need ${costrarechest - coins} more coins`)
+        embed.setDescription(`You do not have enough keys to buy a rare chest. You need ${costrarechest - coins} more keys`)
         embed.setFooter(`Generated for ${message.author.username}`)
         embed.setTimestamp()
         message.channel.send(embed)
