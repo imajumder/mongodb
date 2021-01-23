@@ -2,7 +2,7 @@ const loadCommands = require('./../load-commands')
 const { prefix } = require('./../../config.json')
 
 module.exports = {
-  commands: ['help', 'h'],
+  commands: ['help', 'h', 'support'],
   description: "Describes all of this bot's commands",
   callback: (message, arguments, text) => {
     let reply = 'All of the commands support by Rigurd:\n\n'
