@@ -7,7 +7,6 @@ const reqString = {
 
 const weeklyRewardsSchema = mongoose.Schema(
   {
-    guildId: reqString,
     userId: reqString,
   },
   {
