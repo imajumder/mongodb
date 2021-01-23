@@ -15,11 +15,11 @@ module.exports = {
 
     const coins = Math.floor((Math.random() * 200) + 1) 
 
-    const guildId = message.guild.id
+   
 
     const userId = mention.id
 
-    const newCoins = await economy.addCoins(guildId, userId, coins)
+    const newCoins = await economy.addCoins( userId, coins)
 
     const embed = new Discord.MessageEmbed()
 

@@ -29,10 +29,9 @@ message.channel.send(me)
       return
     }
     
-    const guildId = message.guild.id
     const userId = target.id
 
-    const coins = await economy.getCoins(guildId, userId)
+    const coins = await economy.getCoins(userId)
 
     const embed = new Discord.MessageEmbed()
 

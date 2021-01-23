@@ -5,18 +5,18 @@ const coinsCache = {} // { 'guildId-userId': coins }
 
 module.exports = (client) => {}
 
-module.exports.addCoins = async (guildId, userId, coins) => {
+module.exports.addCoins = async ( userId, coins) => {
   return await mongo().then(async (mongoose) => {
     try {
       
 
       const result = await profileSchema.findOneAndUpdate(
         {
-          guildId,
+          
           userId,
         },
         {
-          guildId,
+         
           userId,
           $inc: {
             coins,
@@ -30,7 +30,7 @@ module.exports.addCoins = async (guildId, userId, coins) => {
 
       
 
-      coinsCache[`${guildId}-${userId}`] = result.coins
+      coinsCache[`${userId}`] = result.coins
 
       return result.coins
     } finally {
@@ -39,8 +39,8 @@ module.exports.addCoins = async (guildId, userId, coins) => {
   })
 }
 
-module.exports.getCoins = async (guildId, userId) => {
-  const cachedValue = coinsCache[`${guildId}-${userId}`]
+module.exports.getCoins = async (userId) => {
+  const cachedValue = coinsCache[`${userId}`]
   if (cachedValue) {
     return cachedValue
   }
@@ -50,7 +50,6 @@ module.exports.getCoins = async (guildId, userId) => {
       
 
       const result = await profileSchema.findOne({
-        guildId,
         userId,
       })
 
@@ -60,13 +59,13 @@ module.exports.getCoins = async (guildId, userId) => {
       } else {
        
         await new profileSchema({
-          guildId,
+         
           userId,
           coins,
         }).save()
       }
 
-      coinsCache[`${guildId}-${userId}`] = coins
+      coinsCache[`${userId}`] = coins
 
       return coins
     } finally {

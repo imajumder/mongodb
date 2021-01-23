@@ -8,7 +8,7 @@ module.exports = {
   expectedArgs: "[ Targeted User ] [ Amount of coins ]",
   description: 'Pays the amount of money specified Note: Deductes money from your balance.',
   callback: async (message, arguments, text) => {
-    const { guild, member } = message
+    const {  member } = message
 
     let target = message.mentions.users.first()
 
@@ -60,7 +60,7 @@ module.exports = {
       return
     }
 
-    const coinsOwned = await economy.getCoins(guild.id, member.id)
+    const coinsOwned = await economy.getCoins(member.id)
     if (coinsOwned < coinsToGive) {
       const embed2 = new Discord.MessageEmbed
       embed2.setTitle('❌ Error Generated')
@@ -73,11 +73,10 @@ module.exports = {
     }
 
     const remainingCoins = await economy.addCoins(
-      guild.id,
       member.id,
       coinsToGive * -1
     )
-    const newBalance = await economy.addCoins(guild.id, target.id, coinsToGive)
+    const newBalance = await economy.addCoins(target.id, coinsToGive)
 
     const embed = new Discord.MessageEmbed()
 

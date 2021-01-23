@@ -28,7 +28,7 @@ embed2.setDescription(` You cannot claim your monthly rewards rewards just yet. 
 embed2.setFooter(`Generated For ${message.author.username}`)
 embed2.setTimestamp()
 
-const { guild, member } = message
+const {  member } = message
 const { id } = member
 
 if (claimedCache.includes(id)) {
@@ -40,7 +40,7 @@ if (claimedCache.includes(id)) {
 
 
 const obj = {
-  guildId: guild.id,
+  
   userId: id,
 }
 
@@ -72,10 +72,10 @@ await mongo().then(async (mongoose) => {
 
     const coinsToGive = 13000
 
-    const guildId = message.guild.id
+   
     const userId = message.author.id
 
-    const newBalance = await economy.addCoins(guildId, userId, coinsToGive)
+    const newBalance = await economy.addCoins( userId, coinsToGive)
 
     // TODO: Give the rewards
     const embed1 = new Discord.MessageEmbed
