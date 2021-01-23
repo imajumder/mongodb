@@ -5,8 +5,6 @@ const Discord = require('discord.js')
 
 module.exports = {
   commands: 'pay',
-  minArgs: 2,
-  maxArgs: 2,
   expectedArgs: "<Target user's @> <Amount of coins>",
   callback: async (message, arguments, text) => {
     const { guild, member } = message
@@ -25,8 +23,10 @@ module.exports = {
       embed3.setTitle('Error Generated')
       embed3.setColor('#060103')
       embed3.setDescription(`❌ ${ping}`)
-      embed3.setFooter(`Generated For ${target.username}`)
+      embed3.setFooter(`Generated For ${message.author.username}`)
       embed3.setTimestamp()
+      message.channel.send(embed3)
+      return
     }
 
 
@@ -35,22 +35,27 @@ module.exports = {
     
 
 
-    if(target === message.author.bot) {
+    if(target.id === '781466481929224203') {
       let samebot = Math.floor(Math.random() * botping.length);
       const ping = (botping [samebot]);
       const embed1 = new Discord.MessageEmbed
       embed1.setTitle('Error Generated')
       embed1.setColor('#060103')
       embed1.setDescription(`❌ ${ping}`)
-      embed1.setFooter(`Generated For ${target.username}`)
+      embed1.setFooter(`Generated For ${message.author.username}`)
       embed1.setTimestamp()
-      message.channel.send(embed)
+      message.channel.send(embed1)
       return
     }
 
     const coinsToGive = arguments[1]
     if (isNaN(coinsToGive)) {
-      message.reply(embed1)
+      const embed4 = new Discord.MessageEmbed
+      embed4.setTitle('Error Generated')
+      embed4.setColor('#060103')
+      embed4.setDescription(`❌ An amount has not been specified..`)
+      embed4.setFooter(`Generated For ${message.author.username}`)
+      message.reply(embed4)
       return
     }
 
@@ -60,7 +65,7 @@ module.exports = {
       embed2.setTitle('Error Generated')
       embed2.setColor('#060103')
       embed2.setDescription(`❌ You do not have ${coinsToGive} Keys to give ${target.username}`)
-      embed2.setFooter(`Generated For ${message.author}`)
+      embed2.setFooter(`Generated For ${message.author.username}`)
       embed2.setTimestamp()
       message.channel.send(embed2)
       return
