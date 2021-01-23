@@ -17,6 +17,7 @@
     "discord.js": "^12.5.1",
     "got": "^11.8.1",
     "https": "^1.0.0",
+    "humanize-duration": "^3.25.1",
     "moment-timezone": "^0.5.32",
     "mongoose": "^5.11.13",
     "ms": "^2.1.3",
