@@ -42,6 +42,7 @@ if (claimedCache.includes(id)) {
 
 
 const obj = {
+  guildId: guild.id,
   userId: id,
 }
 

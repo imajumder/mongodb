@@ -39,5 +39,13 @@ client.on('ready', async () => {
 
 })
 
+client.on('message', async message => {
+  if(message.content === "hi") {
+    const hi = `bruh` || `nani` || `lo`
+    message.channel.send(hi)
+  }
+  
+})
+
     
 client.login(config.token)
