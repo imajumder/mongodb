@@ -1,47 +1,29 @@
-const loadCommands = require('./../load-commands')
-const { prefix } = require('./../../config.json')
+const  Discord = require('discord.js')
 
 module.exports = {
   commands: ['help', 'h', 'support'],
   description: "Describes all of this bot's commands",
   callback: (message, arguments, text) => {
-    let reply = 'All of the commands support by Rigurd:\n\n'
 
-    const commands = loadCommands()
+    const args = arguments[0]
 
-    for (const command of commands) {
-      // Check for permissions
-      let permissions = command.permission
 
-      if (permissions) {
-        let hasPermission = true
-        if (typeof permissions === 'string') {
-          permissions = [permissions]
-        }
-
-        for (const permission of permissions) {
-          if (!message.member.hasPermission(permission)) {
-            hasPermission = false
-            break
-          }
-        }
-
-        if (!hasPermission) {
-          continue
-        }
-      }
-
-      // Format the text
-      const mainCommand =
-        typeof command.commands === 'string'
-          ? command.commands
-          : command.commands[0]
-      const args = command.expectedArgs ? ` ${command.expectedArgs}` : ''
-      const { description } = command
-
-      reply += `**${prefix}${mainCommand}${args}** = ${description}\n`
+    if(args === 'Moderation') {
+        const embed = new Discord.MessageEmbed
+        const embed = new Discord.MessageEmbed
+    embed.setTitle(`Moderation Commands`)
+    embed.setColor('#060103')
+    embed.setDescription(" ```Kick [ Targeted User ]``` ~  Kicks The Targeted User \n   ```Fun```     ```Economy``` ```Misc```          ```Maths```   ```Configuration```")
+    embed.setFooter(`Requested By ${message.author.username} | Rigurd`)
+    embed.setTimestamp()
+    }else {
+      const embed = new Discord.MessageEmbed
+    embed.setTitle(`Rigurds Help Menu`)
+    embed.setColor('#060103')
+    embed.setDescription("  Type ?help [ Category ] for more info\n```Moderation```     ```Fun```     ```Economy``` ```Misc```          ```Maths```   ```Configuration```")
+    embed.setFooter(`Requested By ${message.author.username} | Rigurd`)
+    embed.setTimestamp()
+    message.channel.send(embed)
     }
-
-    message.channel.send(reply)
-  },
+  }
 }
