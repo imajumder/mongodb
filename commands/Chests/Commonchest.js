@@ -4,7 +4,6 @@ const economy = require('../../Util/economy')
 
 module.exports = {
   commands: ['buy-commonchest', 'buy-cc'],
-  cooldown: '10',
   expectedArgs: "[ Mention ]",
   description: "Shows the users current balance",
   callback: async (message, arguments) => {
@@ -15,7 +14,7 @@ module.exports = {
 
     const coins = await economy.getCoins(userId)
 
-    const costcommonchest = 750
+    const costcommonchest = 7
 
     if(coins < costcommonchest) {
         const embed = new Discord.MessageEmbed
