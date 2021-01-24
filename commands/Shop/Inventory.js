@@ -29,6 +29,8 @@ module.exports = {
   description: "Shows the users current balance",
   callback: async (message, arguments) => {
 
+    const target = message.author
+
 
     const userId = message.author.id
 
@@ -55,6 +57,7 @@ module.exports = {
     const embed = new Discord.MessageEmbed
     embed.setTitle(`${message.author.username}'s Inventory`)
     embed.setColor('#060103')
+    embed.setThumbnail(target.displayAvatarURL)
     embed.setDescription(`Common Chest Owned ~ ${cchestowned}
     Uncommon Chest Owned ~ ${uchestowned}
     Rare Chest Owned ~ ${rchestowned}
