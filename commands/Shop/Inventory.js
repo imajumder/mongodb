@@ -44,6 +44,31 @@ module.exports = {
 
     const cchestowned = await CommonChest.getCommonChest(userId)
 
+    const uchestowned = await UncommonChest.getUncommonChest(userId)
+
+    const rchestowned = await RareChest.getRareChest(userId)
+
+    const echest = await EpicChest.getEpicChest(userId)
+
+    const lchest = await LegendaryChest.getLegendaryChest(userId)
+
+    const embed = new Discord.MessageEmbed
+    embed.setTitle(`${message.author.username}'s Inventory`)
+    embed.setColor('#060103')
+    embed.setDescription(`Common Chest Owned ~ ${cchestowned}
+    Uncommon Chest Owned ~ ${uchestowned}
+    Rare Chest Owned ~ ${rchestowned}
+    Epic Chest Owned ~ ${echest}
+    Legendary Chest Owned ~ ${lchest}
+    Emeralds Owned ~ ${emeraldowned}
+    Rubies Owned ~ ${rubyowned}
+    Sapphires Owned ~ ${sapphireowned}
+    Gold Owned ~ ${Goldowned}
+    Diamonds Owned ~ ${diamondowned}`)
+    embed.setFooter(`${message.author.username}'s Inventory | Requested`)
+    embed.setTimestamp()
+    message.channel.send(embed)
+    
 
 
 
