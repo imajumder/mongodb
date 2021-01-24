@@ -57,7 +57,7 @@ module.exports = {
     const embed = new Discord.MessageEmbed
     embed.setTitle(`${message.author.username}'s Inventory`)
     embed.setColor('#060103')
-    embed.setThumbnail(target.displayAvatarURL)
+    embed.setThumbnail(target.displayAvatarURL())
     embed.setDescription(`Common Chest Owned ~ ${cchestowned}
     Uncommon Chest Owned ~ ${uchestowned}
     Rare Chest Owned ~ ${rchestowned}
