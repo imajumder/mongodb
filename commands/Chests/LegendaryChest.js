@@ -9,7 +9,7 @@ module.exports = {
   description: "Shows the users current balance",
   callback: async (message, arguments) => {
     
-    const args = arguments[1]
+    const args = arguments[0]
 
     const userId = message.author.id
 
@@ -17,11 +17,29 @@ module.exports = {
 
     const costrarechest = 3250
 
-    if(coins < costrarechest) {
+    if(coins < costrarechest * args) {
         const embed = new Discord.MessageEmbed
         embed.setTitle(`❌ Error Generated`)
         embed.setColor('#060103')
-        embed.setDescription(`You do not have enough keys to buy a legendary chest. You need ${costrarechest - coins} more keys`)
+        embed.setDescription(`You do not have enough keys to buy ${args} legendary chest. You need ${costrarechest - coins} more keys`)
+        embed.setFooter(`Generated for ${message.author.username}`)
+        embed.setTimestamp()
+        message.channel.send(embed)
+    }
+    if(!args) {
+      const embed = new Discord.MessageEmbed
+      embed.setTitle(`❌ Error Generated`)
+        embed.setColor('#060103')
+        embed.setDescription(`You did not specify an amount of chest to buy`)
+        embed.setFooter(`Generated for ${message.author.username}`)
+        embed.setTimestamp()
+        message.channel.send(embed)
+    }
+    if(args === '0') {
+      const embed = new Discord.MessageEmbed
+      embed.setTitle(`❌ Error Generated`)
+        embed.setColor('#060103')
+        embed.setDescription(`0 is not an valid number try providing 1`)
         embed.setFooter(`Generated for ${message.author.username}`)
         embed.setTimestamp()
         message.channel.send(embed)
@@ -29,15 +47,13 @@ module.exports = {
 
     else{
 
-        const chesttogive = 1
-
         const remainingCoins = await economy.addCoins(
             userId,
             costrarechest * -1
           )
         const common = await RareChest.addLegendaryChest(
             userId,
-            chesttogive,            
+            args,            
         )
 
         const currecommon = await RareChest.getLegendaryChest(userId)
