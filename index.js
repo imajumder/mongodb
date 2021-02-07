@@ -4,7 +4,7 @@ const client = new Discord.Client;
 
 const config = require('./config.json')
 
-client.setMaxListeners(50);
+client.setMaxListeners(100);
 
 const mongo = require('./Util/mongo');
 
@@ -37,14 +37,6 @@ client.on('ready', async () => {
 
   loadCommands(client)
 
-})
-
-client.on('message', async message => {
-  if(message.content === "hi") {
-    const hi = `bruh` || `nani` || `lo`
-    message.channel.send(hi)
-  }
-  
 })
 
     
