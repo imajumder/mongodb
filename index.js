@@ -88,6 +88,7 @@ client.on('message', async message => {
             {name: "Weight", value: `${weight} Lbs`, inline:true},
             {name: "Height", value: `${height} Inches`, inline:true},
           )
+          
           message.channel.send(embed);
       }
       catch(err) {

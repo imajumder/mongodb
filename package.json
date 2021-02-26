@@ -20,6 +20,7 @@
     "https": "^1.0.0",
     "humanize-duration": "^3.25.1",
     "imdb-api": "^4.4.1",
+    "iso-639-1": "^2.1.8",
     "kitsu": "^10.0.0-alpha.10",
     "kitsu-node-js": "^1.0.2",
     "moment-timezone": "^0.5.32",
@@ -31,8 +32,12 @@
     "profanities": "^2.14.0",
     "quick.eco": "^6.0.0",
     "redis": "^3.0.2",
+    "relevant-urban": "^2.0.0",
     "request": "^2.88.2",
     "snekfetch": "^4.0.4",
-    "wokcommands": "github:AlexzanderFlores/WOKCommands#dev"
+    "weather-js": "^2.0.0",
+    "wikijs": "^6.0.1",
+    "wokcommands": "github:AlexzanderFlores/WOKCommands#dev",
+    "ytdl-core": "^4.5.0"
   }
 }
