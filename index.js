@@ -8,6 +8,9 @@ client.setMaxListeners(100);
 
 const mongo = require('./Util/mongo');
 
+client.queue = new Map()
+
+
 const { getPokemon } = require('./Util/Pokemon');
 
 const prof = 
