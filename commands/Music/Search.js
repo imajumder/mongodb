@@ -63,7 +63,7 @@ module.exports = {
             let embedPlay = new MessageEmbed()
                 .setColor("#060103")
                 .setTitle(`Results for \"${arguments.join(" ")}\"`)
-                .setDescription(`${searched.map((video2) => `**\`${++index}\`  |** [\`${video2.title}\`](${video2.url}) - \`${video2.durationFormatted}\``).join("\n")}  \n Type the number of next to your preffered song to play it Eg: 1, 3`)
+                .setDescription(`${searched.map((video2) => `**\`${++index}\`  |** [\`${video2.title}\`](${video2.url}) - \`${video2.durationFormatted}\``).join("\n")}  \n\n Type the number of next to your preffered song to play it Eg: 1, 3`)
                 .setFooter(`Generated for ${message.author.username}`)
                 .setTimestamp();
             // eslint-disable-next-line max-depth
