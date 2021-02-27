@@ -1,9 +1,6 @@
 const { Util, MessageEmbed } = require("discord.js");
 const ytdl = require("ytdl-core");
-const yts = require("yt-search");
-const ytdlDiscord = require("ytdl-core-discord");
 const {YouTube} = require("youtube-sr");
-const fs = require("fs");
 
 module.exports = {
     
