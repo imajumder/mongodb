@@ -1,18 +1,15 @@
 module.exports = {
   
-  commands: ['cc', 'clearchannel'],
+  commands: ['delmsg'],
 
   description: 'Deletes an random amount of messages',
-  cooldown: '30',
-
-
- 
-  minArgs: 0,
-  maxArgs: 0,
   expectedArgs: '',
-  callback: (message) => {
+  callback: (message, arguments) => {
 
-          message.channel.bulkDelete(100).then(() => {
+
+    const args = arguments[0]
+
+          message.channel.bulkDelete(args).then(() => {
           message.channel.send("Deleted messages").then(message => message.delete(3000));
         })
       
