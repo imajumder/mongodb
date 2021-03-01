@@ -17,7 +17,7 @@ module.exports = {
             message.channel.send(embed)
         }
 
-        const args = arguments.join(' ')
+        const args = arguments.join(' ') || `None`
         
         if(!message.channel.permissionsFor(message.member).has("ADMINISTRATOR") || !message.channel.permissionsFor(message.member).has("MANAGE_GUILD")) return message.channel.send(lockPermErr);
 
