@@ -40,7 +40,7 @@ module.exports = {
          }
 
          const embed10 = new Discord.MessageEmbed
-         embed10.setTitle(`Warned ${target} | They now have ${warningsowned} Warnings`)
+         embed10.setTitle(`Warned ${target.username} | They now have ${warningsowned} Warnings`)
          message.channel.send(embed10)
 
   },
