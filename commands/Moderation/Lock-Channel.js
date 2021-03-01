@@ -10,13 +10,6 @@ module.exports = {
         .setTitle(`You do not have permission to use this command`)
         .setColor(`#060103`)
 
-        if(arguments[0]) {
-            const embed = new Discord.MessageEmbed
-            embed.setTitle('Please provide an reason for locking the channel')
-            embed.setColor(`#060103`)
-            message.channel.send(embed)
-        }
-
         const args = arguments.join(' ') || `None`
         
         if(!message.channel.permissionsFor(message.member).has("ADMINISTRATOR") || !message.channel.permissionsFor(message.member).has("MANAGE_GUILD")) return message.channel.send(lockPermErr);
