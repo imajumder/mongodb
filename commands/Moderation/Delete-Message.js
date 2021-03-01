@@ -9,7 +9,7 @@ module.exports = {
 
     const args = arguments[0]
 
-          message.channel.bulkDelete(args).then(() => {
+          message.channel.bulkDelete(args + 1).then(() => {
           message.channel.send("Deleted messages").then(message => message.delete(3000));
         })
       

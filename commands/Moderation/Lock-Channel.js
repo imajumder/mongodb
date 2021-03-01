@@ -16,6 +16,8 @@ module.exports = {
             embed.setColor(`#060103`)
             message.channel.send(embed)
         }
+
+        const args = arguments.join(' ')
         
         if(!message.channel.permissionsFor(message.member).has("ADMINISTRATOR") || !message.channel.permissionsFor(message.member).has("MANAGE_GUILD")) return message.channel.send(lockPermErr);
 
@@ -32,7 +34,7 @@ module.exports = {
             console.log(e);
         }
         const embed = new Discord.MessageEmbed
-        embed.setTitle(`${message.channel.name} has been locked succesfully | Reason - ${arguments[0]}`)
+        embed.setTitle(`${message.channel.name} has been locked succesfully | Reason - `)
         embed.setColor(`#060103`)
 
         message.channel.send(embed);
