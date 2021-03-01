@@ -23,6 +23,10 @@ module.exports = {
             console.log(e);
         }
 
-        message.channel.send(`${message.channel.name} has been unlocked successsfully`);
+        const embed = new Discord.MessageEmbed
+        embed.setTitle(`${message.channel.name} has been unlocked successsfully`)
+        embed.setColor(`#060103`)
+
+        message.channel.send(embed)
     }
 }

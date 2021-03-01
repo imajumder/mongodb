@@ -34,7 +34,7 @@ module.exports = {
             console.log(e);
         }
         const embed = new Discord.MessageEmbed
-        embed.setTitle(`${message.channel.name} has been locked succesfully | Reason - `)
+        embed.setTitle(`${message.channel.name} has been locked succesfully | Reason - ${args}`)
         embed.setColor(`#060103`)
 
         message.channel.send(embed);
