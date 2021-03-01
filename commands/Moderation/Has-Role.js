@@ -16,7 +16,7 @@ module.exports = {
       const roleName = arguments.join(' ')
       const { guild } = message
   
-      const role = guild.roles.cache.find((role) => {
+      const role = message.mentions.roles.first() || guild.roles.cache.find((role) => {
         return role.name === roleName
       })
       if (!role) {

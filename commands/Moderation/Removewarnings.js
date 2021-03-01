@@ -40,6 +40,12 @@ callback: async (message, arguments) => {
         return
       }
 
+    if(!message.member.hasPermission('ADMINISTRATOR') || !message.member.hasPermission('MANAGE_GUILD')) {
+        const embed = new Discord.MessageEmbed
+    embed.setTitle(`You do not have the required permissions to run this command`)
+    message.channel.send(embed)
+    }
+
     const warnowned = await warningscheck.getWarnings(userId, guildId)
 
     if(warnowned < warningsowned) {
@@ -57,5 +63,6 @@ callback: async (message, arguments) => {
     embed.setTitle(`${warningsowned} warnings have been removed | ${target.username} now have ${warnowned - warningsowned} warnings`)
     message.channel.send(embed)
      },
+
      permissions: 'ADMINISTRATOR',
 }

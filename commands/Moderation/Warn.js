@@ -32,12 +32,12 @@ module.exports = {
 
          const warningsowned = await warningscheck.addWarnings(userId, guildId, warnings)
 
-         if(!message.member.guild.me.hasPermission(`KICK_MEMBERS`) || !message.member.guild.me.hasPermission(`BAN_MEMBERS`)){
-            const embed5 = new Discord.MessageEmbed
-            embed5.setTitle(`I don't have the required permissions to run this command`)
-            embed5.setColor('#060103')
-            message.reply(embed5)
-         }
+         if(!message.member.hasPermission('ADMINISTRATOR') || !message.member.hasPermission('MANAGE_GUILD') || !message.member.hasPermission('KICK_MEMBERS') || !message.member.hasPermission('BAN_MEMBERS')){
+            const embed = new Discord.MessageEmbed
+        embed.setTitle(`You do not have the required permissions to run this command`)
+        embed.setColor('#060103')
+        message.channel.send(embed)
+        }
 
          const embed10 = new Discord.MessageEmbed
          embed10.setTitle(`Warned ${target.username} | They now have ${warningsowned} Warnings`)
