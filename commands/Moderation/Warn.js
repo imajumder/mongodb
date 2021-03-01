@@ -1,11 +1,10 @@
 const Discord = require('discord.js')
 
 const warningscheck = require('../../Util/Warnings')
-const { permissions } = require('./Delete-Message')
 
 module.exports = {
  
-    commands: ['warns'],
+    commands: ['warn'],
 
     description: 'Kicks the targeted user',
 
@@ -25,7 +24,7 @@ module.exports = {
           }
 
 
-          const warnings = 0
+          const warnings = 1
 
          const userId = target.id
 
