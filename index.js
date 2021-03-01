@@ -45,6 +45,7 @@ client.on('ready', async () => {
 
   loadCommands(client)
 
+  
 })
 
 

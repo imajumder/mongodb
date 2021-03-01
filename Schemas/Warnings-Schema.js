@@ -8,8 +8,8 @@ const reqString = {
 const WarningsUser = mongoose.Schema({
     userId: reqString,
     guildId: reqString,
-    isMuted: {
-        type: Boolean,
+    warnings: {
+        type: Number,
         required: true,
     }
 })
