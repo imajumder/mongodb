@@ -16,8 +16,8 @@ module.exports = {
         embed1.setTitle(`Please provide a platform the user plays in`)
         embed1.setDescription(`Avaible Platforms
         \`\`\`console ~ All consoles\`\`\`
-        \`\`\`pc\`\`\` ~ Desktop / Laptop\`\`\`
-        \`\`\`mobile\`\`\` ~  Ios | Android (discontinued)\`\`\`
+        \`\`\`pc ~ Desktop / Laptop\`\`\`
+        \`\`\`mobile ~  Ios | Android (discontinued)\`\`\`
         `)
         embed1.setColor(`#060103`)
 
