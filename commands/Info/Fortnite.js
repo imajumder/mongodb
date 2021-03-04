@@ -15,9 +15,9 @@ module.exports = {
         const embed1 = new Discord.MessageEmbed
         embed1.setTitle(`Please provide a platform the user plays in`)
         embed1.setDescription(`Avaible Platforms
-        \`\`\`console\`\`\` ~ All consoles
-        \`\`\`pc\`\`\` ~ Desktop / Laptop
-        \`\`\`mobile\`\`\` ~  Ios | Android (discontinued)
+        \`\`\`console ~ All consoles\`\`\`
+        \`\`\`pc\`\`\` ~ Desktop / Laptop\`\`\`
+        \`\`\`mobile\`\`\` ~  Ios | Android (discontinued)\`\`\`
         `)
         embed1.setColor(`#060103`)
 
