@@ -15,9 +15,9 @@ module.exports = {
         const embed1 = new Discord.MessageEmbed
         embed1.setTitle(`Please provide a platform the user plays in`)
         embed1.setDescription(`Avaible Platforms
-        \`\`\`psn\`\`\` ~ Playstation Network
-        \`\`\`xbl\`\`\` ~ Xbox Live Network
-        \`\`\`battle\`\`\` ~  Battle.net Network
+        \`\`\`console\`\`\` ~ All consoles
+        \`\`\`pc\`\`\` ~ Desktop / Laptop
+        \`\`\`mobile\`\`\` ~  Ios | Android (discontinued)
         `)
         embed1.setColor(`#060103`)
 
@@ -125,7 +125,10 @@ request(options, function (error, response, body) {
                     message.channel.send(embed4)
 
     } catch(err) {
-       console.log(err)
+        const embed = new Discord.MessageEmbed
+             embed.setTitle(`Invalid user or platform. Try again`)
+             embed.setColor("#060103")
+             message.channel.send(embed)
     }
 
 });
