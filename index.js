@@ -49,62 +49,7 @@ client.on('ready', async () => {
   
 })
 
-client.on('messageDelete', async (message) => {
 
-  if(!message.guild) {
-    return
-  }
-
-  const guildId = message.guild.id
-
-  const hi = await mongo().then(async (mongoose) => {
-    try {
-      
-       const hi = await modlogschannel.findOne({
-        guildId,
-      })
-  
-      return hi
-  
-    } finally {
-      mongoose.connection.close()
-    }
-  })
-
-  var bruh = JSON.stringify(hi)
-
-  const nice = JSON.parse(bruh)
-
-  const channel = nice.channelId
-
-  const modchannel = client.channels.cache.get(`${channel}`)
-
-  if (!message.guild) return;
-	const fetchedLogs = await message.guild.fetchAuditLogs({
-		limit: 1,
-		type: 'MESSAGE_DELETE',
-	});
-	const deletionLog = fetchedLogs.entries.first();
-
-  const { executor, target } = deletionLog;
-
-  const embed = new Discord.MessageEmbed
-  embed.setTitle(`Message Deleted`)
-  embed.setColor("#060103")
-  embed.setThumbnail(executor.avatarURL)
-  embed.addFields({
-    name: `Message sent by`, value: `${message.author.tag}`, inline: true,
-  },
-  {
-    name: `Message deleted by`, value: `${executor.tag}`, inline: true,
-  },
-)
-embed.setFooter(`ID : ${executor.id}`)
-embed.setTimestamp()
-
-  modchannel.send(embed)
-
-})
 
 
 client.on('message', async message => {
