@@ -1,0 +1,53 @@
+{
+    "languages": ["english", "spanish"],
+    "translations": {
+      "THE_SUM_IS": {
+        "english": "The sum is",
+        "spanish": "La suma es"
+      },
+      "GENERATEDFOR": {
+        "english": "Generated for",
+        "spanish": "Generado para"
+      },
+      "CHANNEL_INFO1": {
+        "english": "Channel Information for",
+        "spanish": "Información de canal para"
+      },
+      "CHANNEL_INFO2": {
+        "english": "Channel ID",
+        "spanish": "Canal ID"
+      },
+      "CHANNEL_INFO3": {
+        "english": "Channel Type",
+        "spanish": "Tipo de canal"
+      },
+      "CHANNEL_INFO4": {
+        "english": "Channel Description",
+        "spanish": "Descripción del canal"
+      },
+      "CHANNEL_INFO5": {
+        "english": "No Description",
+        "spanish": "Sin descripción"
+      },
+      "CHANNEL_INFO6": {
+        "english": "Channel Created At",
+        "spanish": "Canal creado en"
+      },
+      "CHANNEL_INFO7": {
+        "english": "Is NSFW",
+        "spanish": "Es NSFW"
+      },
+      "CHANNEL_INFO8": {
+        "english": "Text",
+        "spanish": "Texto"
+      },
+      "CHANNEL_INFO9": {
+        "english": "No, It isn't",
+        "spanish": "No, no lo es"
+      },
+      "CHANNEL_INFO10": {
+        "english": "Yes, It is",
+        "spanish": "Sí lo es"
+      }
+    }
+  }

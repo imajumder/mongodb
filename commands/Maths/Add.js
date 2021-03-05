@@ -1,5 +1,6 @@
+const language = require('../../Language')
+
 module.exports = {
-  category: 'Maths',
 
     commands: ['add', 'addition'],
     cooldown: '10',
@@ -11,11 +12,14 @@ module.exports = {
     maxArgs: 2,
     callback: ( message, arguments) => {
 
+      const { guild } = message
+
+
 
       const num1 = +arguments[0]
       const num2 = +arguments[1]
   
-      message.reply(`The sum is ${num1 + num2}.`)
+      message.reply(`${language(guild, 'THE_SUM_IS')} ${num1 + num2}`)
     },
     permissions: 'SEND_MESSAGES',
     requiredRoles: [],
