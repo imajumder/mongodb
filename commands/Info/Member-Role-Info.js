@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js');
+const language = require('../../Language')
 
 module.exports = {
  
@@ -6,46 +7,32 @@ module.exports = {
      
 callback: async (message, arguments) => {
 
+    const { guild } = message
+
     const embed = new MessageEmbed
-    embed.setTitle(`❌ Error Generated`)
-    embed.setDescription(`Please enter any other role except "@here"`)
+    embed.setTitle(`${language(guild, 'ROLE_INFO1')}`)
     embed.setColor(`#060103`)
-    embed.setFooter(`Generated for ${message.author.username}`)
-    embed.setTimestamp()
 
     const embed1 = new MessageEmbed
-    embed1.setTitle(`❌ Error Generated`)
-    embed1.setDescription(`Please enter any other role except "@everyone"`)
+    embed1.setTitle(`${language(guild, 'ROLE_INFO2')}`)
     embed1.setColor(`#060103`)
-    embed1.setFooter(`Generated for ${message.author.username}`)
-    embed1.setTimestamp()
+ 
 
 
     const embed2 = new MessageEmbed
-    embed2.setTitle(`❌ Error Generated`)
-    embed2.setDescription(`Please enter a role`)
+    embed2.setTitle(`${language(guild, 'ROLE_INFO3')}`)
     embed2.setColor(`#060103`)
-    embed2.setFooter(`Generated for ${message.author.username}`)
-    embed2.setTimestamp()
 
 
     const embed3 = new MessageEmbed
-    embed3.setTitle(`❌ Error Generated`)
-    embed3.setDescription(`Please enter a valid role`)
+    embed3.setTitle(`${language(guild, 'ROLE_INFO4')}`)
     embed3.setColor(`#060103`)
-    embed3.setFooter(`Generated for ${message.author.username}`)
-    embed3.setTimestamp()
-
+   
 
     const embed4 = new MessageEmbed
-    embed4.setTitle(`❌ Error Generated`)
-    embed4.setDescription(`List of members was too long and connot be shown`)
+    embed4.setTitle(`${language(guild, 'ROLE_INFO5')}`)
     embed4.setColor(`#060103`)
-    embed4.setFooter(`Generated for ${message.author.username}`)
-    embed4.setTimestamp()
-
-
-
+ 
         if (arguments.includes("@everyone")) return message.channel.send(embed1);
         
         if (arguments.includes("@here")) return message.channel.send(embed);
@@ -66,7 +53,7 @@ callback: async (message, arguments) => {
         let roleEmbed = new MessageEmbed()
             .setColor("#060103")
             .setThumbnail(message.guild.iconURL())
-            .setTitle(`Users With The ${role.name} Role`)
+            .setTitle(`${language(guild, 'ROLE_INFO6')} ${role.name} Role`)
             .setDescription(membersWithRole.join("  ,  "));
         message.channel.send(roleEmbed);
     }

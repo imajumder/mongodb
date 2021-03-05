@@ -48,6 +48,82 @@
       "CHANNEL_INFO10": {
         "english": "Yes, It is",
         "spanish": "Sí lo es"
+      },
+      "INSTRAGRAM1": {
+        "englsih": "Couldn't find a person with that name",
+        "spanish": "No se pudo encontrar a una persona con ese nombre"
+      },
+      "INSTRAGRAM2": {
+        "englsih": "Please enter a name",
+        "spanish": "Por favor ingrese un nombre"
+      },
+      "INSTRAGRAM3": {
+        "englsih": "Profile Information",
+        "spanish": "información del perfil"
+      },
+      "INSTRAGRAM4": {
+        "englsih": "Username",
+        "spanish": "Nombre de usuario"
+      },
+      "INSTRAGRAM5": {
+        "englsih": "Full Name",
+        "spanish": "Nombre completo"
+      },
+      "INSTRAGRAM6": {
+        "englsih": "Private Account",
+        "spanish": "Cuenta privada"
+      },
+      "INSTRAGRAM7": {
+        "english": "Posts",
+        "spanish": "Publicaciones"
+      },
+      "INSTRAGRAM8": {
+        "englsih": "Followers",
+        "spanish": "Seguidoras"
+      },
+      "INSTRAGRAM9": {
+        "englsih": "Following",
+        "spanish": "Siguiente"
+      },
+      "INSTRAGRAM10": {
+        "englsih": "Biography",
+        "spanish": "Biografía"
+      },
+      "INSTRAGRAM11": {
+        "englsih": "Yes 🔐",
+        "spanish": "Si 🔐"
+      },
+      "INSTRAGRAM12": {
+        "englsih": "No 🔐",
+        "spanish": "No 🔐"
+      },
+      "INSTRAGRAM13": {
+        "englsih": "None",
+        "spanish": "Ninguna"
+      },
+      "ROLE_INFO1": {
+        "english": "Please enter any other role except ***@here***",
+        "spanish": "Ingrese cualquier otro rol excepto ***@here***"
+      },
+      "ROLE_INFO2": {
+        "english": "Please enter any other role except ***@everyone***",
+        "spanish": "Ingrese cualquier otro rol excepto ***@everyone***"
+      },
+      "ROLE_INFO3": {
+        "english": "Please enter a role",
+        "spanish": "Por favor ingrese un rol"
+      },
+      "ROLE_INFO4": {
+        "english": "Please enter a valid role",
+        "spanish": "Ingrese un rol válido"
+      },
+      "ROLE_INFO5": {
+        "english": "List of members was too long and cannot be shown",
+        "spanish": "La lista de miembros era demasiado larga y no se puede mostrar"
+      },
+      "ROLE_INFO6": {
+        "english": "Users With The",
+        "spanish": "Usuarios con"
       }
     }
   }

@@ -14,12 +14,11 @@ client.queue = new Map()
 
 const { getPokemon } = require('./Util/Pokemon');
 
-const prof = 
-["alcoholic", "amateur", "analphabet", "anarchist", "ape", "arse", "arselicker", "ass", "ass-master", "ass-kisser", "ass-nugget", "ass-wipe", "asshole", "assmaster", "asskisser", "assnugget", "asswipe", "ass hole", "fuck", "fuck you", "fuckyou", "shit", "pissoff", "pussy", "piss off", "dick", "cock", "dickhead", "dick head", "cock head", "cockhead", "sonofabitch", "soab", "bitch", "bastard",  "cunt", "bollocks", "bugger", "bloody", "hell", "choad", "crikey", "rubbish", "shag", "wanker", "piss", "twat", "thot", "suck"]
-
 const loadfeatures = require('./features/load-features')
 
 const loadCommands = require('./commands/load-commands')
+
+const clientid = `781466481929224203`
 
 
 const connectToMongoDB = async () => {
@@ -27,7 +26,7 @@ const connectToMongoDB = async () => {
     try {
       console.log('Connected to mongoose')
     } finally {
-      mongoose.connection.close()
+      //nothing
     }
   })
 }
@@ -46,25 +45,6 @@ client.on('ready', async () => {
 
   loadCommands(client)
 
-  
-})
-
-
-
-
-client.on('message', async message => {
-
-  if (message.content) {
-    const profane = !!prof.find((word) => {
-      const regex = new RegExp(`\\b${word}\\b`, 'i'); // if the phrase is not alphanumerical,
-      return regex.test(message.content);             // you may need to escape tokens
-    });
-
-    if (profane) {
-      return message.delete()
-        .catch(console.error);
-    }
-  }
   
 })
 
@@ -102,6 +82,12 @@ client.on('message', async message => {
           console.log(err);
           message.channel.send(`That pokemon does not exist.. Mind trying again.`);
       }
+  }
+  
+  if(message.content==="ssss") {
+    
+    message.guild.me.setNickname('hi')
+
   }
 });
 

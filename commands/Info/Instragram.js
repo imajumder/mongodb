@@ -1,6 +1,8 @@
 const { MessageEmbed } = require("discord.js");
 const fetch = require("node-fetch");
 const request = require('request')
+const language = require('../../Language')
+
 
 module.exports = {
   
@@ -8,21 +10,20 @@ module.exports = {
     
     callback: async ( message, arguments) => {
 
+      const { guild } = message
+
+
         const embed1 = new MessageEmbed
-        embed1.setTitle(`❌ Error Generated`)
-        embed1.setDescription(`Couldn't find a person with that username`)
+        embed1.setTitle(`${language(guild, 'INSTRAGRAM1')}`)
         embed1.setColor(`#060103`)
-        embed1.setFooter(`Generated for ${message.author.username}`)
 
         const name = arguments.join(" ");
 
         if (!name) {
 
             const embed = new MessageEmbed
-            embed.setTitle(`❌ Error Generated`)
-            embed.setDescription(`Please enter a name`)
+            embed.setTitle(`${language(guild, 'INSTRAGRAM2')}`)
             embed.setColor(`#060103`)
-            embed.setFooter(`Generated for ${message.author.username}`)
 
             
             return message.channel.send(embed)
@@ -53,25 +54,23 @@ module.exports = {
                 .setTitle(account.full_name)
                 .setURL(`https://instagram.com/${name}`)
                 .setThumbnail(account.profile_pic_url_hd)
-                .setDescription("Profile information")
-                .addField("**Username**", `${account.username}`, true)
-                .addField("**Full name**", `${account.full_name}`, true)
-                .addField("**Private account**", `${account.is_private ? "Yes 🔐" : "No 🔓"}`, true)
-                .addField("**Posts**", `${account.edge_owner_to_timeline_media.count}`, true)
-                .addField("**Followers**", `${account.edge_followed_by.count}`, true)
-                .addField("**Following**", `${account.edge_follow.count}`, true)
+                .setDescription(`${language(guild, 'INSTRAGRAM3')}`)
+                .addField(`**${languag(guild, 'INSTRAGRAM4')}**`, `${account.username}`, true)
+                .addField(`**${language(guild, 'INSTRAGRAM5')}**`, `${account.full_name}`, true)
+                .addField(`${language(guild, 'INSTRAGRAM6')}`, `${account.is_private ? `${language(guild, 'INSTRAGRAM11')}` : `${language(guild, 'INSTRAGRAM12')}`}`, true)
+                .addField(`${language(guild, 'INSTRAGRAM7')}`, `${account.edge_owner_to_timeline_media.count}`, true)
+                .addField(`${language(guild, 'INSTRAGRAM8')}`, `${account.edge_followed_by.count}`, true)
+                .addField(`${language(guild, 'INSTRAGRAM9')}`, `${account.edge_follow.count}`, true)
               
-                .addField("**Biography**", `${account.biography.length == 0 ? "none" : account.biography}`, true)
+                .addField(`${language(guild, 'INSTRAGRAM10')}`, `${account.biography.length == 0 ? `${language(guild, 'INSTRAGRAM13')}` : account.biography}`, true)
     
             message.channel.send(embed);
 
               }catch (err) {
 
                 const embed1 = new MessageEmbed
-                embed1.setTitle(`❌ Error Generated`)
-                embed1.setDescription(`Couldn't find a person with that username`)
+                embed1.setTitle(`${language(guild, 'INSTRAGRAM1')}`)
                 embed1.setColor(`#060103`)
-                embed1.setFooter(`Generated for ${message.author.username}`)
                 message.channel.send(embed1)
               }
           })
