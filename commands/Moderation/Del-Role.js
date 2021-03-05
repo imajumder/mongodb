@@ -50,9 +50,9 @@ module.exports = {
 
       await rMember.roles.remove(role.id).catch(e => message.channel.send(embed7))
       
-      let rolDEL = new MessageEmbed()
-      .setColor(`#060103`)
-      .setDescription(`**${rMember.displayName}** has been de-roled of the role **${role.name}**`)
+      let rolDEL = new Discord.MessageEmbed
+      rolDEL.setColor(`#060103`)
+      rolDEL.setDescription(`**${rMember.displayName}** has been de-roled of the role **${role.name}**`)
 
       message.channel.send(rolDEL)
     
