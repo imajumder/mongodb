@@ -1,10 +1,16 @@
 const Discord = require('discord.js');
 
+const fetch = require('node-fetch').default
+
 const client = new Discord.Client;
 
 const modlogschannel = require('./Schemas/Mod-Logs')
 
+const ModLogsEnabled = require('./Schemas/Mod-Logs-Schema')
+
 const config = require('./config.json')
+
+const Nicknames = require('./Schemas/NIckname-Schema')
 
 client.setMaxListeners(100);
 
@@ -18,6 +24,9 @@ const loadfeatures = require('./features/load-features')
 
 const loadCommands = require('./commands/load-commands')
 
+const commandBase = require('./commands/command-base');
+const { removeAllListeners } = require('./Schemas/Mod-Logs');
+
 const clientid = `781466481929224203`
 
 
@@ -26,7 +35,8 @@ const connectToMongoDB = async () => {
     try {
       console.log('Connected to mongoose')
     } finally {
-      //nothing
+      
+      mongoose.connection.close()
     }
   })
 }
@@ -34,23 +44,36 @@ const connectToMongoDB = async () => {
 connectToMongoDB()
 
 client.on('ready', async () => {
-  console.log('The client is ready!')
+  console.log(`${client.guilds.cache.size} guilds are gonne be amazed`)
  
     setInterval(() => {
         client.user.setActivity(`${client.guilds.cache.size} Servers | ?help`, { type: 'WATCHING' })
     }, 60000); 
 
-
   loadfeatures(client)
 
   loadCommands(client)
 
-  
+  commandBase.loadPrefixes(client)
+
 })
 
 client.on('message', async message => {
+
   if(message.author.bot) return;
-  if(message.content.toLowerCase().startsWith('?pokemon')) {
+
+
+  if(message.channel.id === '822053897451077633') {
+    fetch(`https://api.monkedev.com/fun/chat?msg=${message.content}&uid=${message.author.id}`)
+    .then(response => response.json())
+    .then(data => {
+      message.channel.send(data.response)
+    })
+    .catch(() => {
+      message.channel.send(`something went wrong :(`)
+    })
+  }
+    if(message.content.toLowerCase().startsWith('?pokemon')) {
       const pokemon = message.content.toLowerCase().split(" ")[1];
       try {
           const pokeData = await getPokemon(pokemon);
@@ -83,12 +106,7 @@ client.on('message', async message => {
           message.channel.send(`That pokemon does not exist.. Mind trying again.`);
       }
   }
-  
-  if(message.content==="ssss") {
-    
-    message.guild.me.setNickname('hi')
 
-  }
 });
 
 client.login(config.token)

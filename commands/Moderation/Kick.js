@@ -1,3 +1,4 @@
+const Discord = require('discord.js')
 module.exports = {
  
     commands: ['kick'],
@@ -22,9 +23,17 @@ module.exports = {
         ) {
           const target = mentions.users.first()
           if (target) {
-            const targetMember = message.guild.members.cache.get(target.id)
+            try {
+              const targetMember = message.guild.members.cache.get(target.id)
             targetMember.kick()
             message.channel.send(`${tag} That user has kicked`)
+            } catch (err) {
+
+              const embed = new Discord.MessageEmbed
+              embed.setTitle(`Please increase my rank in the role hiearchy to kick that user`)
+              embed.setColor('#060103')
+              message.channel.send(embed)
+            }
           } else {
             message.channel.send(`${tag} Please specify someone to kick.`)
           }

@@ -206,6 +206,7 @@ module.exports = (client, commandOptions) => {
  * I forgot to add this function to the video.
  * It updates the cache when the !setprefix command is ran.
  */
+
 module.exports.updateCache = (guildId, newPrefix) => {
   guildPrefixes[guildId] = newPrefix
 }
@@ -218,9 +219,8 @@ module.exports.loadPrefixes = async (client) => {
 
         const result = await commandPrefixSchema.findOne({ _id: guildId })
         guildPrefixes[guildId] = result ? result.prefix : globalPrefix
-      }
 
-      console.log(guildPrefixes)
+      }
     } finally {
       mongoose.connection.close()
     }
