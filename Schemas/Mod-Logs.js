@@ -8,7 +8,11 @@ const reqString = {
   const ModlogsChannel = mongoose.Schema({
    
     guildId: reqString,
-    channelId: reqString,
+    channelId: {
+      type: String,
+      required: true,
+      default: 'none'
+    }
     
   })
   

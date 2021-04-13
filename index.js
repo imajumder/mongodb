@@ -6,11 +6,9 @@ const client = new Discord.Client;
 
 const modlogschannel = require('./Schemas/Mod-Logs')
 
-const ModLogsEnabled = require('./Schemas/Mod-Logs-Schema')
-
 const config = require('./config.json')
 
-const Nicknames = require('./Schemas/NIckname-Schema')
+const ModLogsEnabled = require('./Schemas/Mod-Logs-Schema')
 
 client.setMaxListeners(100);
 
@@ -25,10 +23,6 @@ const loadfeatures = require('./features/load-features')
 const loadCommands = require('./commands/load-commands')
 
 const commandBase = require('./commands/command-base');
-const { removeAllListeners } = require('./Schemas/Mod-Logs');
-
-const clientid = `781466481929224203`
-
 
 const connectToMongoDB = async () => {
   await mongo().then(mongoose => {
@@ -108,5 +102,72 @@ client.on('message', async message => {
   }
 
 });
+
+client.on('messageDelete', async (message) => {
+
+
+  if(!message.guild) {
+    return
+  }
+
+  const guildId = message.guild.id
+
+  
+  const hi1 = await mongo().then(async (mongoose) => {
+    try {
+      
+       const hi = await ModLogsEnabled.findOne({
+        guildId,
+      })
+  
+      return hi
+  
+    } finally {
+      mongoose.connection.close()
+    }
+  })
+
+  var bruh1 = JSON.stringify(hi1)
+
+  const nice1 = JSON.parse(bruh1)
+
+  const channel1 = nice1.enabled
+
+  if(channel1 === 0) return
+
+  const hi = await mongo().then(async (mongoose) => {
+    try {
+      
+       const hi = await modlogschannel.findOne({
+        guildId,
+      })
+  
+      return hi
+  
+    } finally {
+      mongoose.connection.close()
+    }
+  })
+
+  var bruh = JSON.stringify(hi)
+
+  const nice = JSON.parse(bruh)
+
+  const channel = nice.channelId
+
+  if(channel === `none`) return
+
+  const modchannel = client.channels.cache.get(`816351706467926026`)
+
+  const embed = new Discord.MessageEmbed
+  embed.setAuthor(`Message Deleted`)
+  embed.setColor('#060103')
+  embed.setTitle(`Message Send By ${message.author.tag}`)
+  embed.setDescription(`Message Deleted in ${message.channel} \n \n ${message.content}`)
+  embed.setTimestamp()
+
+  modchannel.send(embed)
+
+})
 
 client.login(config.token)
