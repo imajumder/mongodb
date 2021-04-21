@@ -28,7 +28,10 @@ const connectToMongoDB = async () => {
   await mongo().then(mongoose => {
     try {
       console.log('Connected to mongoose')
+
     } finally {
+
+      console.log(`Disconnected`)
       
       mongoose.connection.close()
     }

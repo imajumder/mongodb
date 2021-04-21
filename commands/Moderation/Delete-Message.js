@@ -7,10 +7,10 @@ module.exports = {
   callback: (message, arguments) => {
 
 
-    const args = arguments[0]
+    const args = Number(arguments[0])
 
           message.channel.bulkDelete(args + 1).then(() => {
-          message.channel.send("Deleted messages").then(message => message.delete(3000));
+          message.channel.send("Deleted messages").then(message => message.delete(1200));
         })
       
    },
