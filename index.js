@@ -160,7 +160,7 @@ client.on('messageDelete', async (message) => {
 
   if(channel === `none`) return
 
-  const modchannel = client.channels.cache.get(`816351706467926026`)
+  const modchannel = client.channels.cache.get(channel)
 
   const embed = new Discord.MessageEmbed
   embed.setAuthor(`Message Deleted`)
@@ -173,4 +173,288 @@ client.on('messageDelete', async (message) => {
 
 })
 
+client.on("channelCreate", async function(channel){
+  
+
+  const guildId = channel.guild.id
+
+  
+  const hi1 = await mongo().then(async (mongoose) => {
+    try {
+      
+       const hi = await ModLogsEnabled.findOne({
+        guildId,
+      })
+  
+      return hi
+  
+    } finally {
+      mongoose.connection.close()
+    }
+  })
+
+  var bruh1 = JSON.stringify(hi1)
+
+  const nice1 = JSON.parse(bruh1)
+
+  const channel1 = nice1.enabled
+
+  if(channel1 === 0) return
+
+  const hi = await mongo().then(async (mongoose) => {
+    try {
+      
+       const hi = await modlogschannel.findOne({
+        guildId,
+      })
+  
+      return hi
+  
+    } finally {
+      mongoose.connection.close()
+    }
+  })
+
+  var bruh = JSON.stringify(hi)
+
+  const nice = JSON.parse(bruh)
+
+  const channel2222 = nice.channelId
+
+  if(channel2222 === `none`) return
+
+  const modchannel = client.channels.cache.get(channel2222)
+
+  const channeltype = {
+    text : `Text`,
+    voice: `Voice`
+  }
+
+  const embed = new Discord.MessageEmbed
+  embed.setTitle(`New Channel Created`)
+  embed.addFields({name: `Channel Name`, value: `${channel.name}`, inline:false},
+  {name: `Channel ID`, value : `${channel.id}`, inline:true},
+  {name:`Channel Type`, value: channeltype[channel.type], inline:true})
+  embed.setColor('#060103'),
+  embed.setFooter(`Logged by Regard Bot`)
+  embed.setTimestamp()
+
+  modchannel.send(embed)
+
+});
+
+client.on("channelDelete", async function(channel){
+  
+
+  const guildId = channel.guild.id
+
+  
+  const hi1 = await mongo().then(async (mongoose) => {
+    try {
+      
+       const hi = await ModLogsEnabled.findOne({
+        guildId,
+      })
+  
+      return hi
+  
+    } finally {
+      mongoose.connection.close()
+    }
+  })
+
+  var bruh1 = JSON.stringify(hi1)
+
+  const nice1 = JSON.parse(bruh1)
+
+  const channel1 = nice1.enabled
+
+  if(channel1 === 0) return
+
+  const hi = await mongo().then(async (mongoose) => {
+    try {
+      
+       const hi = await modlogschannel.findOne({
+        guildId,
+      })
+  
+      return hi
+  
+    } finally {
+      mongoose.connection.close()
+    }
+  })
+
+  var bruh = JSON.stringify(hi)
+
+  const nice = JSON.parse(bruh)
+
+  const channel2222 = nice.channelId
+
+  if(channel2222 === `none`) return
+
+  const modchannel = client.channels.cache.get(channel2222)
+
+  const channeltype = {
+    text : `Text`,
+    voice: `Voice`
+  }
+
+  const embed = new Discord.MessageEmbed
+  embed.setTitle(`Channel Deleted`)
+  embed.addFields({name: `Channel Name`, value: `${channel.name}`, inline:false},
+  {name: `Channel ID`, value : `${channel.id}`, inline:true},
+  {name:`Channel Type`, value: channeltype[channel.type], inline:true},
+  {name: `Creation Date`, value: channel.createdAt})
+  embed.setColor('#060103'),
+  embed.setFooter(`Logged by Regard Bot`)
+  embed.setTimestamp()
+
+  modchannel.send(embed)
+
+});
+
+client.on("emojiCreate", async function(emoji){
+  
+
+  const guildId = emoji.guild.id
+
+  
+  const hi1 = await mongo().then(async (mongoose) => {
+    try {
+      
+       const hi = await ModLogsEnabled.findOne({
+        guildId,
+      })
+  
+      return hi
+  
+    } finally {
+      mongoose.connection.close()
+    }
+  })
+
+  var bruh1 = JSON.stringify(hi1)
+
+  const nice1 = JSON.parse(bruh1)
+
+  const channel1 = nice1.enabled
+
+  if(channel1 === 0) return
+
+  const hi = await mongo().then(async (mongoose) => {
+    try {
+      
+       const hi = await modlogschannel.findOne({
+        guildId,
+      })
+  
+      return hi
+  
+    } finally {
+      mongoose.connection.close()
+    }
+  })
+
+  var bruh = JSON.stringify(hi)
+
+  const nice = JSON.parse(bruh)
+
+  const channel2222 = nice.channelId
+
+  if(channel2222 === `none`) return
+
+  const modchannel = client.channels.cache.get(channel2222)
+
+  const trueig = {
+    true : `True`,
+    false: `False`
+  }
+
+  
+  const embed = new Discord.MessageEmbed
+  embed.setTitle(`New Emoji Created`)
+  embed.addFields(
+    {name: `Emoji Added`, value: `${emoji} ${emoji.name}`},
+    {name: `Emoji ID`, value: emoji.id},
+    {name: `Is Animated`, value: trueig[emoji.animated]}
+  )
+  embed.setFooter(`Logged by Regard Bot`)
+  embed.setTimestamp()
+
+  modchannel.send(embed)
+
+});
+client.on("emojiDelete", async function(emoji){
+  
+
+  const guildId = emoji.guild.id
+
+  
+  const hi1 = await mongo().then(async (mongoose) => {
+    try {
+      
+       const hi = await ModLogsEnabled.findOne({
+        guildId,
+      })
+  
+      return hi
+  
+    } finally {
+      mongoose.connection.close()
+    }
+  })
+
+  var bruh1 = JSON.stringify(hi1)
+
+  const nice1 = JSON.parse(bruh1)
+
+  const channel1 = nice1.enabled
+
+  if(channel1 === 0) return
+
+  const hi = await mongo().then(async (mongoose) => {
+    try {
+      
+       const hi = await modlogschannel.findOne({
+        guildId,
+      })
+  
+      return hi
+  
+    } finally {
+      mongoose.connection.close()
+    }
+  })
+
+  var bruh = JSON.stringify(hi)
+
+  const nice = JSON.parse(bruh)
+
+  const channel2222 = nice.channelId
+
+  if(channel2222 === `none`) return
+
+  const modchannel = client.channels.cache.get(channel2222)
+
+  const trueig = {
+    true : `True`,
+    false: `False`
+  }
+
+  
+  const embed = new Discord.MessageEmbed
+  embed.setTitle(`Emoji Deleted`)
+  embed.addFields(
+    {name: `Emoji Deleted`, value: `${emoji.name}`, inline:true},
+    {name: `Emoji ID`, value: emoji.id},
+    {name: `Is Animated`, value: trueig[emoji.animated], inline:true},
+    {name: `Creation Date`, value: emoji.createdAt}
+  )
+  embed.setFooter(`Logged by Regard Bot`)
+  embed.setTimestamp()
+
+  modchannel.send(embed)
+
+});
 client.login(config.token)
