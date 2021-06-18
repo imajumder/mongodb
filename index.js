@@ -166,6 +166,8 @@ client.on('messageDelete', async (message) => {
   embed.setAuthor(`Message Deleted`)
   embed.setColor('#060103')
   embed.setTitle(`Message Send By ${message.author.tag}`)
+  embed.setColor("#060103")
+
   embed.setDescription(`Message Deleted in ${message.channel} \n \n ${message.content}`)
   embed.setTimestamp()
 
@@ -238,6 +240,8 @@ client.on("channelCreate", async function(channel){
   embed.setColor('#060103'),
   embed.setFooter(`Logged by Regard Bot`)
   embed.setTimestamp()
+  embed.setColor("#060103")
+
 
   modchannel.send(embed)
 
@@ -308,6 +312,8 @@ client.on("channelDelete", async function(channel){
   {name: `Creation Date`, value: channel.createdAt})
   embed.setColor('#060103'),
   embed.setFooter(`Logged by Regard Bot`)
+  embed.setColor("#060103")
+
   embed.setTimestamp()
 
   modchannel.send(embed)
@@ -380,6 +386,8 @@ client.on("emojiCreate", async function(emoji){
     {name: `Is Animated`, value: trueig[emoji.animated]}
   )
   embed.setFooter(`Logged by Regard Bot`)
+  embed.setColor("#060103")
+
   embed.setTimestamp()
 
   modchannel.send(embed)
@@ -446,15 +454,481 @@ client.on("emojiDelete", async function(emoji){
   const embed = new Discord.MessageEmbed
   embed.setTitle(`Emoji Deleted`)
   embed.addFields(
-    {name: `Emoji Deleted`, value: `${emoji.name}`, inline:true},
+    {name: `Emoji Name`, value: `${emoji.name}`, inline:true},
     {name: `Emoji ID`, value: emoji.id},
     {name: `Is Animated`, value: trueig[emoji.animated], inline:true},
     {name: `Creation Date`, value: emoji.createdAt}
   )
   embed.setFooter(`Logged by Regard Bot`)
+  embed.setColor("#060103")
+
   embed.setTimestamp()
 
   modchannel.send(embed)
 
+});
+
+client.on("guildBanAdd", async function(guild, user){
+  
+
+  const guildId = guild.id
+
+  
+  const hi1 = await mongo().then(async (mongoose) => {
+    try {
+      
+       const hi = await ModLogsEnabled.findOne({
+        guildId,
+      })
+  
+      return hi
+  
+    } finally {
+      mongoose.connection.close()
+    }
+  })
+
+  var bruh1 = JSON.stringify(hi1)
+
+  const nice1 = JSON.parse(bruh1)
+
+  const channel1 = nice1.enabled
+
+  if(channel1 === 0) return
+
+  const hi = await mongo().then(async (mongoose) => {
+    try {
+      
+       const hi = await modlogschannel.findOne({
+        guildId,
+      })
+  
+      return hi
+  
+    } finally {
+      mongoose.connection.close()
+    }
+  })
+
+  var bruh = JSON.stringify(hi)
+
+  const nice = JSON.parse(bruh)
+
+  const channel2222 = nice.channelId
+
+  if(channel2222 === `none`) return
+
+  const modchannel = client.channels.cache.get(channel2222)
+
+  const embed = new Discord.MessageEmbed
+  embed.setAuthor(user.tag, user.avatarURL())
+  embed.setDescription(`${user.tag} was banned`)
+  embed.setFooter(`Logged by Regard Bot`)
+  embed.setColor("#060103")
+  embed.setTimestamp()
+
+  modchannel.send(embed)
+
+});
+
+client.on("guildBanRemove", async function(guild, user){
+  
+
+  const guildId = guild.id
+
+  
+  const hi1 = await mongo().then(async (mongoose) => {
+    try {
+      
+       const hi = await ModLogsEnabled.findOne({
+        guildId,
+      })
+  
+      return hi
+  
+    } finally {
+      mongoose.connection.close()
+    }
+  })
+
+  var bruh1 = JSON.stringify(hi1)
+
+  const nice1 = JSON.parse(bruh1)
+
+  const channel1 = nice1.enabled
+
+  if(channel1 === 0) return
+
+  const hi = await mongo().then(async (mongoose) => {
+    try {
+      
+       const hi = await modlogschannel.findOne({
+        guildId,
+      })
+  
+      return hi
+  
+    } finally {
+      mongoose.connection.close()
+    }
+  })
+
+  var bruh = JSON.stringify(hi)
+
+  const nice = JSON.parse(bruh)
+
+  const channel2222 = nice.channelId
+
+  if(channel2222 === `none`) return
+
+  const modchannel = client.channels.cache.get(channel2222)
+
+  const embed = new Discord.MessageEmbed
+  embed.setAuthor(user.tag, user.avatarURL())
+  embed.setDescription(`${user.tag} was unbanned`)
+  embed.setFooter(`Logged by Regard Bot`)
+  embed.setColor("#060103")
+  embed.setTimestamp()
+
+  modchannel.send(embed)
+
+});
+
+client.on("guildMemberAdd", async function(member){
+  
+
+  const guildId = member.guild.id
+
+  
+  const hi1 = await mongo().then(async (mongoose) => {
+    try {
+      
+       const hi = await ModLogsEnabled.findOne({
+        guildId,
+      })
+  
+      return hi
+  
+    } finally {
+      mongoose.connection.close()
+    }
+  })
+
+  var bruh1 = JSON.stringify(hi1)
+
+  const nice1 = JSON.parse(bruh1)
+
+  const channel1 = nice1.enabled
+
+  if(channel1 === 0) return
+
+  const hi = await mongo().then(async (mongoose) => {
+    try {
+      
+       const hi = await modlogschannel.findOne({
+        guildId,
+      })
+  
+      return hi
+  
+    } finally {
+      mongoose.connection.close()
+    }
+  })
+
+  var bruh = JSON.stringify(hi)
+
+  const nice = JSON.parse(bruh)
+
+  const channel2222 = nice.channelId
+
+  if(channel2222 === `none`) return
+
+  const modchannel = client.channels.cache.get(channel2222)
+
+  const embed = new Discord.MessageEmbed
+  embed.setAuthor(member.user.tag, member.user.avatarURL())
+  embed.setDescription(`${member.user.tag} joined the server`)
+  embed.setTitle(`Member Joined`)
+  embed.setFooter(`Logged by Regard Bot`)
+  embed.setColor("#060103")
+  embed.setTimestamp()
+
+  modchannel.send(embed)
+
+});
+
+
+client.on("guildMemberRemove", async function(member){
+  
+
+  const guildId = member.guild.id
+
+  
+  const hi1 = await mongo().then(async (mongoose) => {
+    try {
+      
+       const hi = await ModLogsEnabled.findOne({
+        guildId,
+      })
+  
+      return hi
+  
+    } finally {
+      mongoose.connection.close()
+    }
+  })
+
+  var bruh1 = JSON.stringify(hi1)
+
+  const nice1 = JSON.parse(bruh1)
+
+  const channel1 = nice1.enabled
+
+  if(channel1 === 0) return
+
+  const hi = await mongo().then(async (mongoose) => {
+    try {
+      
+       const hi = await modlogschannel.findOne({
+        guildId,
+      })
+  
+      return hi
+  
+    } finally {
+      mongoose.connection.close()
+    }
+  })
+
+  var bruh = JSON.stringify(hi)
+
+  const nice = JSON.parse(bruh)
+
+  const channel2222 = nice.channelId
+
+  if(channel2222 === `none`) return
+
+  const modchannel = client.channels.cache.get(channel2222)
+
+  const embed = new Discord.MessageEmbed
+  embed.setAuthor(member.user.tag, member.user.avatarURL())
+  embed.setTitle(`Member Left`)
+  embed.setDescription(`${member.user.tag} left the server. `)
+  embed.setFooter(`Logged by Regard Bot`)
+  embed.setColor("#060103")
+  embed.setTimestamp()
+
+  modchannel.send(embed)
+
+});
+
+client.on("roleCreate", async function(role){
+  
+
+  const guildId = role.guild.id
+
+  
+  const hi1 = await mongo().then(async (mongoose) => {
+    try {
+      
+       const hi = await ModLogsEnabled.findOne({
+        guildId,
+      })
+  
+      return hi
+  
+    } finally {
+      mongoose.connection.close()
+    }
+  })
+
+  var bruh1 = JSON.stringify(hi1)
+
+  const nice1 = JSON.parse(bruh1)
+
+  const channel1 = nice1.enabled
+
+  if(channel1 === 0) return
+
+  const hi = await mongo().then(async (mongoose) => {
+    try {
+      
+       const hi = await modlogschannel.findOne({
+        guildId,
+      })
+  
+      return hi
+  
+    } finally {
+      mongoose.connection.close()
+    }
+  })
+
+  var bruh = JSON.stringify(hi)
+
+  const nice = JSON.parse(bruh)
+
+  const channel2222 = nice.channelId
+
+  if(channel2222 === `none`) return
+
+  const modchannel = client.channels.cache.get(channel2222)
+  const mentionable = {
+    true : `No`,
+    false: `Yes`
+  }
+
+  const embed = new Discord.MessageEmbed
+  embed.setTitle(`New Role Created`)
+  embed.addFields(
+    {name: `Role Name`, value: `${role.name}`, inline:true},
+    {name: `Role Color`, value: `${role.hexColor}`, inline:true},
+    {name: `Role Mentionable`, value: `${mentionable[role.mentionable]}`, inline:true},
+    {name: `Role Postion`, value: `Postion at ${role.position}`, inline:true},
+    {name: `Role Hoisted`, value: `${mentionable[role.hoist]}`, inline:true},
+    {name: `Role ID`, value: `${role.id}`},
+  )
+  embed.setFooter(`Logged by Regard Bot`)
+  embed.setColor("#060103")
+  embed.setTimestamp()
+
+  modchannel.send(embed)
+
+});
+
+client.on("roleDelete", async function(role){
+  
+
+  const guildId = role.guild.id
+
+  
+  const hi1 = await mongo().then(async (mongoose) => {
+    try {
+      
+       const hi = await ModLogsEnabled.findOne({
+        guildId,
+      })
+  
+      return hi
+  
+    } finally {
+      mongoose.connection.close()
+    }
+  })
+
+  var bruh1 = JSON.stringify(hi1)
+
+  const nice1 = JSON.parse(bruh1)
+
+  const channel1 = nice1.enabled
+
+  if(channel1 === 0) return
+
+  const hi = await mongo().then(async (mongoose) => {
+    try {
+      
+       const hi = await modlogschannel.findOne({
+        guildId,
+      })
+  
+      return hi
+  
+    } finally {
+      mongoose.connection.close()
+    }
+  })
+
+  var bruh = JSON.stringify(hi)
+
+  const nice = JSON.parse(bruh)
+
+  const channel2222 = nice.channelId
+
+  if(channel2222 === `none`) return
+
+  const modchannel = client.channels.cache.get(channel2222)
+  const mentionable = {
+    true : `No`,
+    false: `Yes`
+  }
+
+  const embed = new Discord.MessageEmbed
+  embed.setTitle(`Role Deleted`)
+  embed.addFields(
+    {name: `Role Name`, value: `${role.name}`, inline:true},
+    {name: `Role Color`, value: `${role.hexColor}`, inline:true},
+    {name: `Role Mentionable`, value: `${mentionable[role.mentionable]}`, inline:true},
+    {name: `Role Postion`, value: `Postion at ${role.position}`, inline:true},
+    {name: `Role Hoisted`, value: `${mentionable[role.hoist]}`, inline:true},
+    {name: `Role ID`, value: `${role.id}`},
+    {name: `Role Creation`, value: `${role.createdAt}`}
+  )
+  embed.setFooter(`Logged by Regard Bot`)
+  embed.setColor("#060103")
+  embed.setTimestamp()
+
+  modchannel.send(embed)
+
+});
+
+client.on("channelUpdate", async function(oldChannel,newChannel){
+  
+
+  const guildId = newChannel.guild.id
+
+  
+  const hi1 = await mongo().then(async (mongoose) => {
+    try {
+      
+       const hi = await ModLogsEnabled.findOne({
+        guildId,
+      })
+  
+      return hi
+  
+    } finally {
+      mongoose.connection.close()
+    }
+  })
+
+  var bruh1 = JSON.stringify(hi1)
+
+  const nice1 = JSON.parse(bruh1)
+
+  const channel1 = nice1.enabled
+
+  if(channel1 === 0) return
+
+  const hi = await mongo().then(async (mongoose) => {
+    try {
+      
+       const hi = await modlogschannel.findOne({
+        guildId,
+      })
+  
+      return hi
+  
+    } finally {
+      mongoose.connection.close()
+    }
+  })
+
+  var bruh = JSON.stringify(hi)
+
+  const nice = JSON.parse(bruh)
+
+  const channel2222 = nice.channelId
+
+  if(channel2222 === `none`) return
+
+  const modchannel = client.channels.cache.get(channel2222)
+
+  const embed = new Discord.MessageEmbed
+  //oldChannel.topic and all works so yeah don't forget that lol
+  embed.setFooter(`Logged by Regard Bot`)
+  embed.setColor("#060103")
+  embed.setTimestamp()
+// add modchannel.send here later on
 });
 client.login(config.token)
